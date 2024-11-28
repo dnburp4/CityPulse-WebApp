@@ -21,6 +21,10 @@ module.exports.routes = {
 
   '/': { view: 'pages/homepage' },
 
+  'GET /event': { controller: 'EventController', action: 'find'},
+
+  
+
 
   /***************************************************************************
   *                                                                          *

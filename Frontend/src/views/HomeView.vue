@@ -2,6 +2,28 @@
 
 import EventCard from '@/components/EventCard.vue';
 
+
+let events = [
+  {
+    "id": "01",
+    "name": "Tomorrowland",
+    "bild": "test",
+    "datum": "test",
+    "Typ": "test",
+    "Preis": "10",
+    "Bewertung": "test"
+  },
+  {
+    "id": "01",
+    "name": "Tomorrowland",
+    "bild": "test",
+    "datum": "test",
+    "Typ": "test",
+    "Preis": "10",
+    "Bewertung": "test"
+  }
+]
+
 </script>
 
 <template>
@@ -12,6 +34,8 @@ import EventCard from '@/components/EventCard.vue';
   <div class="events-container">
 
     <EventCard />
+
+
     <EventCard />
     <EventCard />
     <EventCard />
