@@ -22,8 +22,9 @@ module.exports.routes = {
   '/': { view: 'pages/homepage' },
 
   'GET /event': { controller: 'EventController', action: 'find'},
-
-  
+  'POST /event': { controller: 'EventController', action: 'create'},
+  //'GET /event/:id': 'meal.findOne',
+  //'DELETE /event/:id': 'meal.destroy'
 
 
   /***************************************************************************
