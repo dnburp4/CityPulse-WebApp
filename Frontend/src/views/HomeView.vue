@@ -2,6 +2,7 @@
 import EventCard from '@/components/EventCard.vue';
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
+import HeaderStartseite from '@/components/HeaderStartseite.vue';
 
 // Daten aus dem Backend
 const events = ref([]);

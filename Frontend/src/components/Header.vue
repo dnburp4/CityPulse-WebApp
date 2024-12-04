@@ -2,11 +2,11 @@
   <header class="app-header">
     <div class="header-container">
       <button @click="goBack" class="back-button">
-        <img src="@/assets/back-icon.svg" alt="Back" />
+        
       </button>
       <h1>{{ title }}</h1>
       <button class="search-button">
-        <img src="@/assets/search-icon.svg" alt="Search" />
+        
       </button>
     </div>
   </header>
