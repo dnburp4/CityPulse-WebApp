@@ -26,9 +26,6 @@
     },
 
 
-
-
-
     update: async function (req, res) {
       sails.log.debug("Update event with ID:", req.params.id);
       sails.log.debug("Update data:", req.body);

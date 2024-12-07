@@ -2,8 +2,7 @@
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
-// Daten für die Events und das neue Event
-const events = ref([]); // Liste aller Events
+const events = ref([]); 
 const newEvent = ref({
   id: '',
   name: '',
@@ -15,9 +14,9 @@ const newEvent = ref({
   ort: '',
 });
 
-const editEvent = ref(null); // Aktuell zu bearbeitendes Event
+const editEvent = ref(null); 
 
-// Alle Events laden (READ)
+//read
 const loadEvents = async () => {
   try {
     const response = await axios.get('http://localhost:1337/event');
@@ -27,12 +26,12 @@ const loadEvents = async () => {
   }
 };
 
-// Neues Event erstellen (CREATE)
+//create
 const createEvent = async () => {
   try {
     await axios.post('http://localhost:1337/event', newEvent.value);
     alert('Event erfolgreich erstellt');
-    loadEvents(); // Events neu laden
+    loadEvents(); 
     newEvent.value = {
       id: '',
       name: '',
@@ -48,32 +47,31 @@ const createEvent = async () => {
   }
 };
 
-// Event aktualisieren (UPDATE)
+//update
 const updateEvent = async () => {
   if (!editEvent.value) return;
   try {
     await axios.put(`http://localhost:1337/event/${String(editEvent.value.id)}`, editEvent.value);
 
     alert('Event erfolgreich aktualisiert');
-    loadEvents(); // Events neu laden
-    editEvent.value = null; // Bearbeitungsmodus verlassen
+    loadEvents(); 
+    editEvent.value = null; 
   } catch (error) {
     console.error('Fehler beim Aktualisieren des Events:', error);
   }
 };
 
-// Event löschen (DELETE)
+//delete
 const deleteEvent = async (id) => {
   try {
     await axios.delete(`http://localhost:1337/event/${id}`);
     alert('Event erfolgreich gelöscht');
-    loadEvents(); // Events neu laden
+    loadEvents(); 
   } catch (error) {
     console.error('Fehler beim Löschen des Events:', error);
   }
 };
 
-// Events laden, wenn die Komponente gemountet wird
 onMounted(loadEvents);
 </script>
 
@@ -84,7 +82,7 @@ onMounted(loadEvents);
   <div class="crud-test-view">
     <h1>CRUD Test View</h1>
 
-    <!-- CREATE: Neues Event erstellen -->
+    <!--create -->
     <section>
       <h2>Neues Event erstellen</h2>
       <form @submit.prevent="createEvent">
@@ -100,7 +98,7 @@ onMounted(loadEvents);
       </form>
     </section>
 
-    <!-- UPDATE: Event bearbeiten -->
+    <!--update-->
     <section v-if="editEvent">
       <h2>Event bearbeiten</h2>
       <form @submit.prevent="updateEvent">
@@ -117,7 +115,7 @@ onMounted(loadEvents);
       </form>
     </section>
 
-    <!-- READ + DELETE: Liste aller Events -->
+    <!--read+delete-->
     <section>
       <h2>Alle Events</h2>
       <ul>
