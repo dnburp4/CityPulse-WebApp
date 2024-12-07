@@ -26,7 +26,7 @@ module.exports.routes = {
   'PUT /event/:id': { controller: 'EventController', action: 'update' },
   'DELETE /event/:id': { controller: 'EventController', action: 'destroy' },
 
-  
+  'GET /event/filter': { controller: 'EventController', action: 'filter' },
   //'GET /event/:id': 'meal.findOne',
   //'DELETE /event/:id': 'meal.destroy'
 

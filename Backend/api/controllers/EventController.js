@@ -43,6 +43,27 @@
     
     
 
+    filter: async function (req, res) {
+      sails.log.debug("...");
+  
+      const { name, typ } = req.query; 
+      // Query-Parameter kann ich im Browser testen mit ... ?name=Tomorrowland&typ=Konzert)
+      //können wir auch testen mit Postman - Software Vorlesung
+  
+      let query = {};
+  
+      // Filter nach Name
+      if (name) {
+        query.name = { contains: name }; 
+      }
+      // Filter nach Typ
+      if (typ) {
+        query.typ = typ; 
+      }
+      // Abfrage in der Datenbank
+      let events = await Event.find(query);
+      return res.json(events); 
+    },
 
     
     
