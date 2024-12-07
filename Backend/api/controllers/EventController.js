@@ -40,11 +40,15 @@ let events = [
   module.exports = {
 
     //read
+    
     find: async function (req, res) {
+      sails.log.debug("List all events....");
+      let events = await events.find();
       return res.json(events);
     },
   
-
+  
+/*
     //create ohne datenbank verbindung - speichern in lokalem array
     create: async function (req, res) {
      const { id, name, bild, datum, typ, preis, bewertung, ort } = req.body;
@@ -62,11 +66,12 @@ let events = [
       events.push(newEvent); 
     return res.json(newEvent); 
     },
+    */
 
     
 
     //create -nicht möglich brauchen lokales array nutzen
-    /*
+    
     create: async function (req, res) {
       sails.log.debug("Erstelle neues Event...");
       
@@ -76,7 +81,7 @@ let events = [
     
       return res.ok();
     },
-    */
+    
     
 
   
