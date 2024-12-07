@@ -1,12 +1,17 @@
 <template>
   <header class="app-header">
     <div class="header-container">
+      <!-- Zurück-Button -->
       <button @click="goBack" class="back-button">
-        
+        <img src="@/assets/back-icon.svg" alt="Zurück" />
       </button>
+
+      <!-- Titel -->
       <h1>{{ title }}</h1>
-      <button class="search-button">
-        
+
+      <!-- Startseite-Button -->
+      <button @click="goHome" class="home-button">
+        <img src="@/assets/home-icon.svg" alt="Startseite" />
       </button>
     </div>
   </header>
@@ -21,8 +26,14 @@ export default {
     },
   },
   methods: {
+    // Zurück-Navigation
     goBack() {
       this.$router.go(-1); // Navigiert zur vorherigen Seite
+    },
+
+    // Startseite-Navigation
+    goHome() {
+      this.$router.push('/'); // Navigiert zur Startseite
     },
   },
 };
@@ -52,8 +63,7 @@ h1 {
   text-align: center;
 }
 
-.back-button,
-.search-button {
+button {
   background: none;
   border: none;
   cursor: pointer;

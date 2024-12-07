@@ -2,15 +2,15 @@
 import EventCard from '@/components/EventCard.vue';
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
-import HeaderStartseite from '@/components/HeaderStartseite.vue';
+import Footer from '@/components/Footer.vue';
 
-// Daten aus dem Backend
+
 const events = ref([]);
 
-// Daten beim Laden der Komponente holen
+
 onMounted(async () => {
   try {
-    const response = await axios.get('http://localhost:1337/event'); // Backend
+    const response = await axios.get('http://localhost:1337/event'); 
     events.value = response.data; 
   } catch (error) {
     console.error('Fehler beim Laden der Events:', error);
@@ -18,7 +18,7 @@ onMounted(async () => {
 });
 
 
-//noch alle hinzufügen
+
 </script>
 
 <template>
@@ -38,6 +38,7 @@ onMounted(async () => {
       />
     </div>
   </main>
+  <Footer/>
 </template>
 
 <style>

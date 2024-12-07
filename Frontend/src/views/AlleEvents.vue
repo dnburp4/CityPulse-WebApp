@@ -21,9 +21,13 @@ onMounted(async () => {
 </script>
 
 <template>
+
+<Header title="AlleEvents"/>
+ 
+
   <div class="alle-events-view">
     
-    <Header title="AlleEvents" />
+    
 
     <main class="events-container">
       
@@ -44,6 +48,9 @@ onMounted(async () => {
     
     
   </div>
+
+  <Footer/>
+
 </template>
 
 <style scoped>

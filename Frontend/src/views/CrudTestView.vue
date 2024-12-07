@@ -1,6 +1,8 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
 
 const events = ref([]); 
 const newEvent = ref({
@@ -79,9 +81,12 @@ onMounted(loadEvents);
 
 
 <template>
-  <div class="crud-test-view">
-    <h1>CRUD Test View</h1>
+<Header title="CRUD" />
 
+<h1>CRUD Test View</h1>
+
+  <div class="crud-test-view">
+  
     <!--create -->
     <section>
       <h2>Neues Event erstellen</h2>
@@ -133,6 +138,8 @@ onMounted(loadEvents);
       </ul>
     </section>
   </div>
+
+  <Footer/>
 </template>
 
 <style scoped>
