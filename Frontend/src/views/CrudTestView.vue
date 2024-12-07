@@ -52,7 +52,8 @@ const createEvent = async () => {
 const updateEvent = async () => {
   if (!editEvent.value) return;
   try {
-    await axios.put(`http://localhost:1337/event/${editEvent.value.id}`, editEvent.value);
+    await axios.put(`http://localhost:1337/event/${String(editEvent.value.id)}`, editEvent.value);
+
     alert('Event erfolgreich aktualisiert');
     loadEvents(); // Events neu laden
     editEvent.value = null; // Bearbeitungsmodus verlassen
