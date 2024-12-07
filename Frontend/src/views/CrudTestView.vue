@@ -88,7 +88,7 @@ onMounted(loadEvents);
       <form @submit.prevent="createEvent">
         <input v-model="newEvent.id" type="text" placeholder="id" required />
         <input v-model="newEvent.name" type="text" placeholder="Name" required />
-        <input v-model="newEvent.bild" type="text" placeholder="Bild-URL" />
+        <input v-model="newEvent.bild" type="text" placeholder="/src/assets/images/" />
         <input v-model="newEvent.datum" type="text" placeholder="Datum" />
         <input v-model="newEvent.typ" type="text" placeholder="Typ" />
         <input v-model="newEvent.preis" type="text" placeholder="Preis" />

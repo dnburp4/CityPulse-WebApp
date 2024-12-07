@@ -1,18 +1,79 @@
+<script setup>
+import Header from '@/components/Header.vue'; 
+import Footer from '@/components/Footer.vue'; 
+import EventCard from '@/components/EventCard.vue'; 
+
+import { ref, onMounted } from 'vue'; 
+import axios from 'axios'; 
+
+
+const events = ref([]);
+
+
+onMounted(async () => {
+  try {
+    const response = await axios.get('http://localhost:1337/event'); 
+    events.value = response.data; 
+  } catch (error) {
+    console.error('Fehler beim Laden der Events:', error);
+  }
+});
+</script>
+
 <template>
-  <div>
-    <h1>Alle Events</h1>
-    <p>Hier werden alle Events angezeigt.</p>
+  <div class="alle-events-view">
+    
+    <Header title="AlleEvents" />
+
+    <main class="events-container">
+      
+      <div class="event-list">
+        <EventCard
+          v-for="event in events"
+          :key="event.id"
+          :id="event.id"
+          :name="event.name"
+          :bild="event.bild"
+          :datum="event.datum"
+          :ort="event.ort"
+          :bewertung="event.bewertung"
+        />
+      </div>
+    </main>
+
+    
+    
   </div>
 </template>
 
-<script>
-export default {
-  name: 'AlleEvents',
-};
-</script>
-
 <style scoped>
+
+.alle-events-view {
+  background-color: #000; 
+  color: white; /* Weißer Text */
+  min-height: 100vh; /* Mindestens die Höhe des Bildschirms */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Hauptinhalt */
+.events-container {
+  padding: 20px;
+  flex: 1;
+}
+
 h1 {
-  color: #57164a;
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Grid für Event-Karten */
+.event-list {
+  display: flex;
+  flex-direction: column; /* Stapelt die EventCards untereinander */
+  gap: 20px;
 }
 </style>
