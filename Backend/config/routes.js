@@ -30,7 +30,19 @@ module.exports.routes = {
   //'GET /event/:id': 'meal.findOne',
   //'DELETE /event/:id': 'meal.destroy'
 
-  
+  'GET /news': { controller: 'NewsController', action: 'find' },
+  'POST /news': { controller: 'NewsController', action: 'create' },
+  'PUT /news/:id': { controller: 'NewsController', action: 'update' },
+  'DELETE /news/:id': { controller: 'NewsController', action: 'destroy' },
+
+
+  'GET /tickets': { controller: 'TicketController', action: 'find' },
+  'POST /tickets': { controller: 'TicketController', action: 'create' },
+  'PUT /tickets/:id': { controller: 'TicketController', action: 'update' },
+  'DELETE /tickets/:id': { controller: 'TicketController', action: 'destroy' },
+
+
+
 
   /***************************************************************************
   *                                                                          *

@@ -52,9 +52,9 @@ const resetFilters = () => {
         <option value="">Alle Typen</option>
         <option value="Konzert">Konzert</option>
         <option value="Theater">Theater</option>
-        <option value="Theater">Familie</option>
-        <option value="Theater">Club</option>
-        <option value="Theater">Fasching</option>
+        <option value="Familie">Familie</option>
+        <option value="Club">Club</option>
+        <option value="Fasching">Fasching</option>
         <option value="Sport">Sport</option>
 
         

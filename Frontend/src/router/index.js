@@ -27,6 +27,19 @@ const router = createRouter({
       name: 'crudTest',
       component: () => import('../views/CrudTestView.vue'), // Lazy-loaded
     },
+    {
+      path: '/news', // Route für die CRUD-Test-View
+      name: 'news',
+      component: () => import('../views/NewsView.vue'), // Lazy-loaded
+    },
+    {
+      path: '/AdminNews', // Route für die CRUD-Test-View
+      name: 'AdminNews',
+      component: () => import('../views/AdminNewsView.vue'), // Lazy-loaded
+    },
+
+
+
   ],
 });
 

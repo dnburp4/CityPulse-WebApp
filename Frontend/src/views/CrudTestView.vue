@@ -37,6 +37,7 @@ const createEvent = async () => {
     newEvent.value = {
       id: '',
       name: '',
+      availableTickets: '', 
       bild: '',
       datum: '',
       typ: '',
@@ -93,9 +94,25 @@ onMounted(loadEvents);
       <form @submit.prevent="createEvent">
         <input v-model="newEvent.id" type="text" placeholder="id" required />
         <input v-model="newEvent.name" type="text" placeholder="Name" required />
+        <input v-model="newEvent.availableTickets" type="number" placeholder="Verfügbare Tickets || Dieser Wert ist fest und kann nicht verändert werden" />
         <input v-model="newEvent.bild" type="text" placeholder="/src/assets/images/" />
         <input v-model="newEvent.datum" type="text" placeholder="Datum" />
-        <input v-model="newEvent.typ" type="text" placeholder="Typ" />
+
+        <!-- <input v-model="newEvent.typ" type="text" placeholder="Typ" /> -->
+
+        <select v-model="newEvent.typ">
+
+        <option value="" disabled selected hidden>Typ der Veranstaltung wählen</option>
+        <option value="Konzert">Konzert</option>
+        <option value="Theater">Theater</option>
+        <option value="Familie">Familie</option>
+        <option value="Club">Club</option>
+        <option value="Fasching">Fasching</option>
+        <option value="Sport">Sport</option>
+
+        </select>
+
+
         <input v-model="newEvent.preis" type="text" placeholder="Preis" />
         <input v-model="newEvent.bewertung" type="number" min="1" max="5" placeholder="Bewertung" />
         <input v-model="newEvent.ort" type="text" placeholder="Ort" />
@@ -111,7 +128,24 @@ onMounted(loadEvents);
         <input v-model="editEvent.name" type="text" placeholder="Name" required />
         <input v-model="editEvent.bild" type="text" placeholder="Bild-URL" />
         <input v-model="editEvent.datum" type="text" placeholder="Datum" />
-        <input v-model="editEvent.typ" type="text" placeholder="Typ" />
+
+
+        <!-- <input v-model="editEvent.typ" type="text" placeholder="Typ" /> -->
+
+
+        <select v-model="editEvent.typ">
+          <option value="" disabled selected hidden>Typ der Veranstaltung wählen</option>
+          <option value="Konzert">Konzert</option>
+          <option value="Theater">Theater</option>
+          <option value="Familie">Familie</option>
+          <option value="Club">Club</option>
+          <option value="Fasching">Fasching</option>
+          <option value="Sport">Sport</option>
+        </select>
+
+
+
+
         <input v-model="editEvent.preis" type="text" placeholder="Preis" />
         <input v-model="editEvent.bewertung" type="number" min="1" max="5" placeholder="Bewertung" />
         <input v-model="editEvent.ort" type="text" placeholder="Ort" />
@@ -128,6 +162,7 @@ onMounted(loadEvents);
           <h3>{{ event.name }}</h3>
           <p>id: {{ event.id }}</p>
           <p>Datum: {{ event.datum }}</p>
+          <p>Verfügbare Tickets: {{ event.availableTickets }}</p>
           <p>Ort: {{ event.ort }}</p>
           <p>Typ: {{ event.typ }}</p>
           <p>Preis: {{ event.preis }}€</p>
@@ -160,7 +195,7 @@ form {
   margin-bottom: 20px;
 }
 
-input, button {
+input, button, select {
   padding: 10px;
   font-size: 1rem;
 }

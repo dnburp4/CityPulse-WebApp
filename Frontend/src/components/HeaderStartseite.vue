@@ -14,7 +14,7 @@
         </header>
 
                     
-        <a href="login.html" class="btn-custom btn-primary">Aktuelle Events</a>
+        <RouterLink to="/alleevents" class="btn-custom btn-primary">Aktuelle Events</RouterLink>
 
 
         <p>Lust auf coole Events mit Familie und Freunde?</p>
@@ -24,8 +24,8 @@
             <hr class="custom-line">
 
             <div class="button-container">
-                <a href="events.html" class="circle-button events">Events</a>
-                <a href="news.html" class="circle-button news">News</a>
+                <RouterLink to= "/alleevents" class="circle-button events">Events</RouterLink>
+                <RouterLink to="/news" class="circle-button news">News</RouterLink>
                 <a href="contact.html" class="circle-button contact">Kontakt</a>
             </div>
         
