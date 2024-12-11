@@ -13,9 +13,7 @@ d)
 1:n Beziehung
 1 Event kann mehrere Tickets haben
 
-Admin kann die Anzahl der Tickets bei Eventerstellung angeben
-Admin löscht ein Event -> Zugehörige Tickets werden gelöscht
-Es gibt Relationen zwischen Tickets und Events
+Admin kann die Anzahl der Tickets bei Eventerstellung angeben.Admin löscht ein Event -> Zugehörige Tickets werden gelöscht. Es gibt Relationen zwischen Tickets und Events
 
 
 
