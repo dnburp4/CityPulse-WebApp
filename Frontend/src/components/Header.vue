@@ -1,15 +1,15 @@
 <template>
   <header class="app-header">
     <div class="header-container">
-      <!-- Zurück-Button -->
+     
       <button @click="goBack" class="back-button">
         <img src="@/assets/back-icon.svg" alt="Zurück" />
       </button>
 
-      <!-- Titel -->
+      
       <h1>{{ title }}</h1>
 
-      <!-- Startseite-Button -->
+     
       <button @click="goHome" class="home-button">
         <img src="@/assets/home-icon.svg" alt="Startseite" />
       </button>

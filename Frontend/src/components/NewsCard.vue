@@ -3,7 +3,11 @@
 <template>
   <div class="news-card">
     <img :src="bild" alt="news image" />
-    <!-- Details -->
+    <!-- Details -müssen wir noch anpassen -->
+
+
+
+
     <div class="news-card-text">
       <h2>{{ newsTitle }}</h2>
       <p>{{ newsContent }}</p>

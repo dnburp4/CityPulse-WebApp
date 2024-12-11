@@ -2,7 +2,7 @@
 <template>
     <div class="news-card">
       <img :src="bild" alt="news image" />
-      <!-- Details -->
+      
       <div class="news-card-text">
         <h2>{{ newsTitle }}</h2>
         <p>{{ newsContent }}</p>

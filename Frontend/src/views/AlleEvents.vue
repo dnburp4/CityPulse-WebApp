@@ -137,10 +137,13 @@ const resetFilters = () => {
 }
 
 .events-container {
+  flex: 1;
+  flex-direction: column;
   display: flex;
-  justify-content: center; 
-  align-items: flex-start; 
+  justify-content: flex-start; 
+  align-items: center; 
   padding: 20px;
+  min-height: auto; 
 }
 
 .event-list {
@@ -148,7 +151,9 @@ const resetFilters = () => {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
   gap: 20px; 
   max-width: 1200px; 
+  margin-top: 0; 
   width: 100%; 
+  min-height: auto; 
 }
 
 </style>

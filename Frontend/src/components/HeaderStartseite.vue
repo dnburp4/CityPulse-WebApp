@@ -67,7 +67,7 @@ h1 {
     width: 40px;
     height: 40px;
     cursor: pointer;
-    z-index: 999; /* Bringt das Icon in den Vordergrund */
+    z-index: 999; 
     text-decoration: none; 
 }
 

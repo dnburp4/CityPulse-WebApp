@@ -1,4 +1,4 @@
-const { v4: uuidv4 } = require('uuid'); // Wird verwendet, um eindeutige IDs der Tickets zu generieren
+const { v4: uuidv4 } = require('uuid'); // Wird verwendet um eindeutige IDs der Tickets zu generieren
 
 module.exports = {
 
@@ -8,7 +8,6 @@ module.exports = {
     let params = req.allParams();
 
     try {
-      // Neues Event erstellen
       const newEvent = await Event.create(params).fetch();
 
       // Tickets für die Veranstaltung erstellen. Man erstellet die Anzahl der Verfügbaren Tickets 
@@ -34,6 +33,9 @@ module.exports = {
     }
   },
 
+
+
+    //find
     find: async function (req, res) {
       sails.log.debug("List all events....");
       let events = await Event.find();
@@ -41,26 +43,7 @@ module.exports = {
     },
   
   
-    // create: async function (req, res) {
-    //   sails.log.debug("Erstelle neues Event...");
-      
-    //   let params = req.allParams();
-    
-    //  await Event.create(params);
-    
-    //   return res.ok();
-    // },
-
-
-    // destroy: async function (req, res) {
-    //   sails.log.debug("Delete category....");
-    //   await Event.destroy({ id: req.params.id });
-    //   await Ticket.destroy({forEvent: req.params.id })
-    //   res.ok();
-    // },
-
-
-
+    //destroy
     destroy: async function (req, res) {
       sails.log.debug("Delete category....");
       
@@ -77,23 +60,23 @@ module.exports = {
     
 
 
+    //update
     update: async function (req, res) {
       sails.log.debug("Update event with ID:", req.params.id);
       sails.log.debug("Update data:", req.body);
     
       let updatedEvent = await Event.updateOne({ id: req.params.id }).set(req.body); 
     
-    //  Tickets aktualisieren, falls relevante Felder vorhanden sind
     const ticketUpdates = {};
 
     if (req.body.name) {
-      ticketUpdates.event = req.body.name; // Aktualisiert das Name-Feld in den Tickets
+      ticketUpdates.event = req.body.name; 
     }
     if (req.body.datum) {
-      ticketUpdates.datum = req.body.datum; // Aktualisiert das Datum-Feld in den Tickets
+      ticketUpdates.datum = req.body.datum; 
     }
 
-    // Falls relevante Ticket-Felder vorhanden sind, aktualisiere die Tickets
+    //<
     if (Object.keys(ticketUpdates).length > 0) {
       await Ticket.update({ forEvent: req.params.id }).set(ticketUpdates);
       sails.log.debug("Tickets were updated...")
@@ -110,6 +93,8 @@ module.exports = {
     },
     
     
+
+
 
     filter: async function (req, res) {
       sails.log.debug("...");

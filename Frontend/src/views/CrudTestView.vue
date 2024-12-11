@@ -98,8 +98,7 @@ onMounted(loadEvents);
         <input v-model="newEvent.bild" type="text" placeholder="/src/assets/images/" />
         <input v-model="newEvent.datum" type="text" placeholder="Datum" />
 
-        <!-- <input v-model="newEvent.typ" type="text" placeholder="Typ" /> -->
-
+        
         <select v-model="newEvent.typ">
 
         <option value="" disabled selected hidden>Typ der Veranstaltung wählen</option>
@@ -128,9 +127,6 @@ onMounted(loadEvents);
         <input v-model="editEvent.name" type="text" placeholder="Name" required />
         <input v-model="editEvent.bild" type="text" placeholder="Bild-URL" />
         <input v-model="editEvent.datum" type="text" placeholder="Datum" />
-
-
-        <!-- <input v-model="editEvent.typ" type="text" placeholder="Typ" /> -->
 
 
         <select v-model="editEvent.typ">
@@ -182,6 +178,7 @@ onMounted(loadEvents);
   max-width: 800px;
   margin: 0 auto;
   font-family: Arial, sans-serif;
+  padding: 20px; 
 }
 
 h1 {

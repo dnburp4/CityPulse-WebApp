@@ -14,7 +14,7 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      // Lazy-loaded Route
+      
       component: () => import('../views/AboutView.vue'),
     },
     {
@@ -23,19 +23,19 @@ const router = createRouter({
       component: () => import('../views/AlleEvents.vue'),
     },
     {
-      path: '/crud-test', // Route für die CRUD-Test-View
+      path: '/crud-test', 
       name: 'crudTest',
-      component: () => import('../views/CrudTestView.vue'), // Lazy-loaded
+      component: () => import('../views/CrudTestView.vue'), 
     },
     {
-      path: '/news', // Route für die CRUD-Test-View
+      path: '/news', 
       name: 'news',
-      component: () => import('../views/NewsView.vue'), // Lazy-loaded
+      component: () => import('../views/NewsView.vue'), 
     },
     {
-      path: '/AdminNews', // Route für die CRUD-Test-View
+      path: '/AdminNews', 
       name: 'AdminNews',
-      component: () => import('../views/AdminNewsView.vue'), // Lazy-loaded
+      component: () => import('../views/AdminNewsView.vue'), 
     },
 
 
