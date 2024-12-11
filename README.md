@@ -3,7 +3,8 @@ Aufgabe 4
 a)
 CRUD Operationen: 
 -> Entiät Event ist vollständig
-(Entität News noch nicht vollständig)
+
+(Entität News vollständig aber noch nicht in responsive Design)
 
 b)
 Suchfunktion:
