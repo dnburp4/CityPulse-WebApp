@@ -1,4 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import { useUserStore } from "../stores/user";
+import LoginView from '../views/LoginView.vue'
+import SignUpView from '../views/SignUpView.vue'
+
+import RestrictedView from '../views/RestrictedView.vue'
 
 
 import HomeView from '../views/HomeView.vue';
@@ -38,9 +43,31 @@ const router = createRouter({
       component: () => import('../views/AdminNewsView.vue'), 
     },
 
+    {
+      path: '/login', 
+      name: 'login',
+      component: () => import('../views/LoginView.vue'), 
+    },
 
 
   ],
-});
+})
+
+
+router.beforeEach((to, from, next) => {
+  const userStore = useUserStore();
+
+  if (
+    to.name !== "login" &&
+    to.name !== "signup" &&
+    to.name !== "home" &&
+    to.name !== "about" &&
+    userStore.user == null
+  ) {
+    next({ name: "login" });
+  } else {
+    next();
+  }
+})
 
 export default router;

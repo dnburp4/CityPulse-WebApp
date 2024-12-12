@@ -27,4 +27,20 @@ module.exports.bootstrap = async function() {
   // ]);
   // ```
 
+  if (await User.count() > 0) {
+    return;
+ }
+
+  await User.createEach([
+    { emailAddress: 'levi.brecht@htwg-konstanz.de', fullName: 'Levi Brecht', isSuperAdmin:true,
+     password: await sails.helpers.passwords.hashPassword("1234567"),
+     },
+    { emailAddress: 'Nicolas.Burbano@example.com', fullName: 'Nicolas Burbano',
+      password: await sails.helpers.passwords.hashPassword("123456")},
+ 
+
+      //weitere anlegen
+ ]);
+
+
 };

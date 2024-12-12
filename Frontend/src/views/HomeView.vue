@@ -54,7 +54,8 @@ onMounted(async () => {
   margin-top: 30px;
   display: grid;
   gap: 20px;
-  padding: 20px;
+  padding: 30px;
+  padding-top: 80px;
 }
 
 

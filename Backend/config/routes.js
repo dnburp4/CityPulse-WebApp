@@ -42,6 +42,11 @@ module.exports.routes = {
   'DELETE /tickets/:id': { controller: 'TicketController', action: 'destroy' },
 
 
+  'POST /login': "login.login",
+  'POST /register': "login.register",
+  'GET /logout': "login.logout",
+  'GET /restricted': "restricted.example"
+
 
 
   /***************************************************************************

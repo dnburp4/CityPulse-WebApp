@@ -54,7 +54,7 @@ module.exports.security = {
   cors: {
     allRoutes: true, // Erlaube CORS für alle Routen
     allowOrigins: ['http://localhost:5173'], // Erlaube Anfragen vom Frontend-Port
-    allowCredentials: false,
+    allowCredentials: true,
   },
 
 };
