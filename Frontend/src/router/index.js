@@ -49,25 +49,39 @@ const router = createRouter({
       component: () => import('../views/LoginView.vue'), 
     },
 
+    {
+      path: '/kontakt',
+      name: 'kontakt',
+      component: () => import('../views/KontaktView.vue'),
+    },
+
+    {
+      path: '/event/:id', 
+      name: 'eventDetail',
+      component: () => import('../views/EventDetailView.vue'), 
+    },
+
 
   ],
 })
 
 
+// Liste der öffentlichen Seiten
+const publicPages = ['home', 'news', 'kontakt', 'login', 'signup', 'alleevents', 'events', 'crudTest', 'eventDetail'];
+
 router.beforeEach((to, from, next) => {
   const userStore = useUserStore();
+  const isPublicPage = publicPages.includes(to.name);
 
-  if (
-    to.name !== "login" &&
-    to.name !== "signup" &&
-    to.name !== "home" &&
-    to.name !== "about" &&
-    userStore.user == null
-  ) {
+  console.log('Navigating to:', to.name);
+  console.log('Is public page:', isPublicPage);
+
+  if (!isPublicPage && userStore.user == null) {
+    // Weiterleitung zur Login-Seite
     next({ name: "login" });
   } else {
-    next();
+    next(); // Zugriff erlauben
   }
-})
+});
 
 export default router;

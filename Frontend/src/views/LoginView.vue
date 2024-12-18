@@ -14,7 +14,7 @@
 <template>
   <form @submit.prevent="login">
     <div>
-      <label>Email: </label>
+      <label>Email1: </label>
       <input type="email" v-model="email" />
     </div>
     <div>

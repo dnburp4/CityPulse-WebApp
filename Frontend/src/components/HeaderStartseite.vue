@@ -24,10 +24,11 @@
             <hr class="custom-line">
 
             <div class="button-container">
-                <RouterLink to= "/alleevents" class="circle-button events">Events</RouterLink>
-                <RouterLink to="/news" class="circle-button news">News</RouterLink>
-                <a href="contact.html" class="circle-button contact">Kontakt</a>
+            <RouterLink to="/alleevents" class="circle-button events">Events</RouterLink>
+            <RouterLink to="/news" class="circle-button news">News</RouterLink>
+            <RouterLink to="/kontakt" class="circle-button contact">Kontakt</RouterLink>
             </div>
+
         
     </section>
 

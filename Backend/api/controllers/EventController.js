@@ -119,6 +119,28 @@ module.exports = {
     },
 
     
+    findOne: async function (req, res) {
+      sails.log.debug("Fetching single event...");
+      try {
+        const { id } = req.params; // Extrahiere die ID aus den URL-Parametern
+        const event = await Event.findOne({ id }); // Suche das Event basierend auf der ID
+    
+        if (!event) {
+          return res.notFound({ message: "Event not found" }); // Falls kein Event gefunden wird
+        }
+    
+      // Pfad zum Bild ergänzen (falls notwendig)
+      if (event.bild && !event.bild.startsWith('http')) {
+      event.bild = `http://localhost:1337/uploads/${event.bild}`;
+      }
+
+        return res.json(event); // Event-Daten als JSON zurückgeben
+      } catch (error) {
+        sails.log.error("Error fetching event:", error); // Logge den Fehler
+        return res.serverError({ message: "Error fetching event" });
+      }
+    },
+    
     
     
     

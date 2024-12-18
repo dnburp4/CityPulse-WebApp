@@ -12,6 +12,7 @@ module.exports = {
       preis: { type: 'number' },
       bewertung: { type: 'number', defaultsTo: 0 },
       ort: { type: 'string' },
+      video: { type: 'string' },
       
 
       //Add a reference to tickets
