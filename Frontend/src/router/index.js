@@ -67,7 +67,7 @@ const router = createRouter({
 
 
 // Liste der öffentlichen Seiten
-const publicPages = ['home', 'news', 'kontakt', 'login', 'signup', 'alleevents', 'events', 'crudTest', 'eventDetail'];
+const publicPages = ['home', 'news', 'kontakt', 'login', 'signup', 'alleevents', 'events', 'crudTest', 'eventDetail', 'AdminNews'];
 
 router.beforeEach((to, from, next) => {
   const userStore = useUserStore();
