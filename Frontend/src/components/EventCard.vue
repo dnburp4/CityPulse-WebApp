@@ -1,6 +1,7 @@
 <template>
   <div class="event-card">
     <img :src="bild" alt="event image" />
+
     
     <!-- Details -->
     <div class="event-card-text">
