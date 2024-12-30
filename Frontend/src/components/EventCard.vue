@@ -1,21 +1,26 @@
 <template>
   <div class="event-card">
     <img :src="bild" alt="event image" />
-
- 
+    
+    <!-- Details -->
     <div class="event-card-text">
-  
       <h2>
         <RouterLink :to="`/event/${id}`" class="event-link">{{ name }}</RouterLink>
       </h2>
 
-      <img src="@/assets/calender.svg" alt="date" />
-      <p>Datum: {{ datum }}</p>
-      <img src="@/assets/location.svg" alt="location" />
-      <i>Ort: {{ ort }}</i>
+      <div class="event-details">
+        <div class="event-detail">
+          <img src="@/assets/calender.svg" alt="date" class="icon" />
+          <p>Datum: {{ datum }}</p>
+        </div>
+        <div class="event-detail">
+          <img src="@/assets/location.svg" alt="location" class="icon" />
+          <i>Ort: {{ ort }}</i>
+        </div>
+      </div>
     </div>
 
-   
+    <!-- Bewertung -->
     <div class="review-container">
       <img
         v-for="n in Array(bewertung).fill(0)"
@@ -61,14 +66,8 @@ export default {
   font-family: 'Rubik', sans-serif;
 }
 
-.event-card-text img {
-  width: 20px;
-  height: 20px;
-  float: left;
-}
-
 .event-card h2 {
-  margin: 0;
+  margin: 0 0 10px;
 }
 
 .event-card .event-link {
@@ -81,10 +80,34 @@ export default {
   color: #ffd700;
 }
 
-.event-card p,
-.event-card i {
+.event-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Zentriert die Inhalte horizontal */
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.event-detail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.event-detail p,
+.event-detail i {
   color: white;
-  margin-left: 30px;
+  text-align: center; /* Text wird horizontal in der Mitte ausgerichtet */
+  margin: 0; /* Entfernt Abstände */
+}
+
+.event-detail .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.review-container {
+  margin-top: 20px;
 }
 
 .review-container img {

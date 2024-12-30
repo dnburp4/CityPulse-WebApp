@@ -1,8 +1,10 @@
 <template>
   <footer class="footer">
     <div class="footer-links">
-      <a href="agb.html">AGB</a>
-      <a href="impressum.html">Impressum</a>
+      <a href="AGB">AGB</a>
+      <a href="Impressum">Impressum</a>
+      <a href="Datenschutz">Datenschutz</a>
+
     </div>
     <div class="social-media">
       <a href="https://www.facebook.com" target="_blank">

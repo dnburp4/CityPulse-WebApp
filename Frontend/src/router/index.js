@@ -61,13 +61,30 @@ const router = createRouter({
       component: () => import('../views/EventDetailView.vue'), 
     },
 
+    {
+      path: '/Impressum', 
+      name: 'Impressum',
+      component: () => import('../views/ImpressumView.vue'), 
+    },
+
+    {
+      path: '/AGB', 
+      name: 'AGB',
+      component: () => import('../views/AGBView.vue'), 
+    },
+
+    {
+      path: '/Datenschutz', 
+      name: 'Datenschutz',
+      component: () => import('../views/DatenschutzView.vue'), 
+    },
 
   ],
 })
 
 
 // Liste der öffentlichen Seiten
-const publicPages = ['home', 'news', 'kontakt', 'login', 'signup', 'alleevents', 'events', 'crudTest', 'eventDetail', 'AdminNews'];
+const publicPages = ['home', 'news', 'kontakt', 'login', 'signup', 'alleevents', 'events', 'crudTest', 'eventDetail', 'AdminNews', 'Impressum', 'AGB', 'Datenschutz'];
 
 router.beforeEach((to, from, next) => {
   const userStore = useUserStore();
