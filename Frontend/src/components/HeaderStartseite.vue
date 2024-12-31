@@ -6,9 +6,14 @@
             
             <img src="@/assets/LogoSVG_CityPulse.svg" alt="CityPulseLogo" id="CityPulseLogo">
 
-        <a href="profil.html" id="profile-icon">
+        <RouterLink to="/login" id="profile-icon">
         <img src="@/assets/accountIcon.svg" alt="Profile Icon"> 
-    </a>
+        </RouterLink>
+
+
+
+
+
 
 
         </header>

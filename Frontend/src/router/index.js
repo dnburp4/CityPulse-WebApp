@@ -44,9 +44,21 @@ const router = createRouter({
     },
 
     {
+      path: '/admincenter', 
+      name: 'AdminCenter',
+      component: () => import('../views/AdminCenter.vue'), 
+    },
+
+    {
       path: '/login', 
       name: 'login',
       component: () => import('../views/LoginView.vue'), 
+    },
+
+    {
+      path: '/signup', 
+      name: 'signup',
+      component: () => import('../views/SignUpView.vue'), 
     },
 
     {
@@ -104,7 +116,7 @@ const router = createRouter({
 
 
 // Liste der öffentlichen Seiten
-const publicPages = ['home', 'news', 'kontakt', 'login', 'signup', 'alleevents', 'events', 'crudTest', 'eventDetail', 'AdminNews', 'Impressum', 'AGB', 'Datenschutz', 'ticketkauf', 'pDaten', 'Zahlung'];
+const publicPages = [ 'AdminCenter','home', 'news', 'kontakt', 'login', 'signup', 'alleevents', 'events', 'crudTest', 'eventDetail', 'AdminNews', 'Impressum', 'AGB', 'Datenschutz', 'ticketkauf', 'pDaten', 'Zahlung'];
 
 router.beforeEach((to, from, next) => {
   const userStore = useUserStore();
