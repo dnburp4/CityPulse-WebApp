@@ -22,5 +22,11 @@ export const useUserStore = defineStore("user", {
         console.error("Login failed:", error);
       }
     },
+
+
+    
+
+
+
   },
 });

@@ -109,6 +109,11 @@ const router = createRouter({
       name: 'Zahlung',
       component: () => import('../views/ZahlungView.vue'), 
     },
+    {
+      path: '/restricted',
+      name: 'restricted',
+      component: RestrictedView,
+    },
 
 
   ],
