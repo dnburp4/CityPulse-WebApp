@@ -46,6 +46,7 @@ module.exports.routes = {
   'POST /register': "login.register",
   'GET /logout': "login.logout",
   'GET /restricted': "restricted.example",
+  'GET /user' : {controller: 'UserController', action: 'find'},
 
   'GET /event/:id': { controller: 'EventController', action: 'findOne' },
 

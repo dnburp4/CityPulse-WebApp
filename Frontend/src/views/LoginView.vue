@@ -18,7 +18,6 @@ async function login() {
   try {
     // Benutzer anmelden
     await userStore.signIn(email.value, password.value);
-
     // Wenn Benutzer erfolgreich angemeldet ist, weiterleiten
     if (userStore.user) {
       console.log("Logged in");

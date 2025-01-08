@@ -3,9 +3,14 @@ import EventCard from '@/components/EventCard.vue';
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import Footer from '@/components/Footer.vue';
+import { useUserStore } from "../stores/user";
+
+const userStore = useUserStore();
 
 
 const events = ref([]);
+const isSuperAdmin = ref(false); // Standardwert ist false
+
 
 
 onMounted(async () => {
@@ -17,6 +22,18 @@ onMounted(async () => {
   }
 });
 
+onMounted(async () => {
+  try {
+    await userStore.loadUserData(); // Benutzerdaten laden
+    console.log('Aktueller Benutzer:', userStore.user);
+    console.log('Benutzername:', userStore.user?.fullName);
+    console.log('E-Mail-Adresse:', userStore.user?.emailAddress);
+    console.log('isAdmin:', userStore.user?.isSuperAdmin)
+    isSuperAdmin.value = userStore.user?.isSuperAdmin || false; 
+  } catch (error) {
+    console.error('Fehler beim Laden der Benutzerdaten:', error);
+  }
+});
 
 
 </script>
@@ -37,11 +54,28 @@ onMounted(async () => {
         :bewertung="event.bewertung"
       />
     </div>
+
+<div v-if = "isSuperAdmin" class="admin-container">
+<p> Welcome back Admin {{ userStore.user.fullName }}</p>
+<RouterLink to="/AdminCenter" class="btn-custom">AdminCenter</RouterLink>  
+<!-- Klasse aus dem Komponent StartSeiteHeader -->
+</div> <!-- admin-container -->
+
+
+
   </main>
+
   <Footer/>
 </template>
 
 <style>
+
+.admin-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+}
 
 .content {
   background-color: black;
