@@ -14,7 +14,7 @@ const news = ref([]);
 //read
 onMounted(async () => {
   try {
-    const response = await axios.get('/'); 
+    const response = await axios.get('http://localhost:1337/news'); 
     news.value = response.data; 
   } catch (error) {
     console.error('Fehler beim Laden der Events:', error);

@@ -1,71 +1,67 @@
 <script setup>
-  import { ref } from 'vue'
-  import { useUserStore } from "../stores/user";
-  import Footer from '@/components/Footer.vue';
-  const userStore = useUserStore();
-  let fullName =ref("");
-  let email = ref("");
-  let password =ref("");
-  async function register() {
-        userStore.signUp(fullName.value, email.value, password.value);
+import { ref } from 'vue';
+import { useUserStore } from "../stores/user";
+import Footer from '@/components/Footer.vue';
+
+const userStore = useUserStore();
+
+// Reaktive Variablen
+let email = ref("");
+let password = ref("");
+let fullName = ref("");
+// let address = ref("");
+// let phoneNumber = ref("");
+
+async function register() {
+  userStore.signUp( email.value, password.value, fullName.value,);
         if (useUserStore.user) {
           console.log("Logged in")
         }
-  }
+  
+}
 </script>
 
 <template>
+  <div class="main-container">
+    <img src="@/assets/LogoSVG_CityPulse.svg" alt="CityPulseLogo" id="CityPulseLogo">
 
+    <div class="log-in-container">
+      <form @submit.prevent="register">
+        <h1>SignUp</h1>
 
-<div class="main-container">
-<img src="@/assets/LogoSVG_CityPulse.svg" alt="CityPulseLogo" id="CityPulseLogo">
+        <div class="input-container">
+          <label>Name: </label>
+          <input v-model="fullName" placeholder="Ihr Name" />
+        </div>
 
-<div class="log-in-container">
+        <div class="input-container">
+          <label>E-Mail: </label>
+          <input type="email" v-model="email" placeholder="example@mail.com" />
+        </div>
 
-  <form @submit.prevent="register">
+        <div class="input-container">
+          <label>Password: </label>
+          <input type="password" v-model="password" placeholder="Ihr Passwort" />
+        </div>
 
+        
 
-<h1>SignUp</h1>
+        <!-- <div class="input-container">
+          <label>Telefon-Nr: </label>
+          <input v-model="phoneNumber" placeholder="015754241069" />
+        </div>
 
+        <div class="input-container">
+          <label>Persönliche Adresse: </label>
+          <input v-model="address" placeholder="Ihre Adresse" />
+        </div> -->
 
-<div class="input-container">
-  <label>Name: </label>
-  <input v-model="fullName" />
-</div>
+        <button type="submit" class="form-button">SignUp</button>
+      </form>
+    </div>
+  </div>
 
-<div class="input-container">
-  <label>Telefon-Nr: </label>
-  <input v-model="phoneNumber" placeholder="+4915754241069"/>
-</div>
-
-<div class="input-container">
-  <label>Persönliche Adresse: </label>
-  <input v-model="address" />
-</div>
-
-<div class="input-container">
-  <label>Nutzername: </label>
-  <input type="email" v-model="email" placeholder="example@mail.com"/>
-</div>
-
-<div class="input-container">
-  <label>Password: </label>
-  <input type="password" v-model="password" />
-</div>
-<button type="submit" class="form-button">SignUp</button>
-</form>
-
-
-</div>
-
-
-
-</div>
-
-
-<Footer />
-
-
+  <Footer />
 </template>
 
 <style>
@@ -80,13 +76,12 @@
 }
 
 #CityPulseLogo {
-    width: 300px;
-    height: auto;
-    margin-bottom: 20px;
+  width: 300px;
+  height: auto;
+  margin-bottom: 20px;
 }
 
-
-.log-in-container  {
+.log-in-container {
   position: relative;
   max-width: 300px;
   width: 100%;
@@ -98,29 +93,28 @@
   flex-direction: column;
 }
 
-.log-in-container h1, 
+.log-in-container h1,
 .account-registrieren-text {
-  text-align: center; 
+  text-align: center;
   padding: 5px;
 }
 
-
 .input-container {
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
   width: 100%;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
 }
 
- .input-container input {
+.input-container input {
   padding: 10px;
   width: 100%;
   outline: none;
   border-radius: 6px;
-  border: 1px solid #ccc; 
-  box-sizing: border-box; 
-  font-size: 14px; 
-  height: auto; 
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 14px;
+  height: auto;
 }
 
 .form-button {
@@ -132,17 +126,12 @@
   cursor: pointer;
   border-radius: 8px;
   background-color: blueviolet;
-  font-size: 16px; 
+  font-size: 16px;
 }
 
-
-.account-registrieren-text{
-     text-decoration: none;
-     color: black;
-     font-size: 14px; 
- }
-
+.account-registrieren-text {
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+}
 </style>
-
-
-

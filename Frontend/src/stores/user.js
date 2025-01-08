@@ -26,6 +26,22 @@ export const useUserStore = defineStore("user", {
         console.error("Login fehlgeschlagen:", error);
       }
     },
+    async signUp(email, password, fullName) {
+      let registerInformation = {
+        emailAddress: email,
+        password: password,
+        fullName: fullName,
+      };
+    
+      try {
+        const response = await axios.post("/user", registerInformation);
+        this.user = response.data; // Speichere die Daten des Benutzers
+        router.push("/restricted"); // Weiterleitung nach erfolgreichem Sign-Up
+      } catch (error) {
+        console.error("Sign-Up fehlgeschlagen:", error.response?.data || error.message);
+      }
+    
+    },
 
     // Methode zum Laden der Benutzerdaten, wenn nötig
     async loadUserData() {
@@ -44,7 +60,7 @@ export const useUserStore = defineStore("user", {
     }, 
 
     getIsSuperAdmin() {
-      return this.isSuperAdmin; // Gibt die gespeicherte Benutzer-ID zurück
+      return this.isSuperAdmin; // Gibt an, ob der User ein Admin ist oder nicht
     }
 
 

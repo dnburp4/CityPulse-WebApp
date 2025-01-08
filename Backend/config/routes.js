@@ -42,11 +42,12 @@ module.exports.routes = {
   'DELETE /tickets/:id': { controller: 'TicketController', action: 'destroy' },
 
 
-  'POST /login': "login.login",
-  'POST /register': "login.register",
-  'GET /logout': "login.logout",
   'GET /restricted': "restricted.example",
-  'GET /user' : {controller: 'UserController', action: 'find'},
+  'GET /user' : {controller: 'UserController', action: 'find'}, //Wichtig fuer die Anzeige von Name und Attributen auf der Webseite 
+  'POST /user' : {controller: 'UserController', action: 'register'}, //Registrieung von Benutzer und die neue Benutzer speichern
+  'POST /login': 'UserController.login',
+
+
 
   'GET /event/:id': { controller: 'EventController', action: 'findOne' },
 
