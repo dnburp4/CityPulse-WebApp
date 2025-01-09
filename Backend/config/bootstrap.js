@@ -35,7 +35,7 @@ module.exports.bootstrap = async function() {
     { emailAddress: 'levi.brecht@htwg-konstanz.de', fullName: 'Levi Brecht', isSuperAdmin:true,
      password: await sails.helpers.passwords.hashPassword("1234567"),
      },
-    { emailAddress: 'Nicolas.Burbano@example.com', fullName: 'Nicolas Burbano', isSuperAdmin:true, 
+    { emailAddress: 'nicolas.burbano@htwg-konstanz.de', fullName: 'Nicolas Burbano', isSuperAdmin:true, 
       password: await sails.helpers.passwords.hashPassword("123456")},
  
 

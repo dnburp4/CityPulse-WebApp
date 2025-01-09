@@ -64,16 +64,23 @@ module.exports = {
       }
     },
   
-    async destroy(req, res) {
-      try {
-        const deletedUser = await User.destroyOne({ id: req.params.id });
-        if (!deletedUser) {
-          return res.notFound();
-        }
-        return res.json(deletedUser);
-      } catch (error) {
-        return res.serverError(error);
-      }
+    // async destroy(req, res) {
+    //   try {
+    //     const deletedUser = await User.destroyOne({ id: req.params.id });
+    //     if (!deletedUser) {
+    //       return res.notFound();
+    //     }
+    //     return res.json(deletedUser);
+    //   } catch (error) {
+    //     return res.serverError(error);
+    //   }
+    // },
+
+
+    destroy: async function (req, res) {
+      sails.log.debug("Delete user....");
+      await User.destroy({ id: req.params.id });      
+      res.ok();
     },
 
     logout: async function (req, res) {
