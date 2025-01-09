@@ -126,7 +126,7 @@ const superAdminPages = ["AdminCenter", "AdminNews", "crud-test"];
 
 router.beforeEach(async (to, from, next) => {
   const userStore = useUserStore();
-  const isLoggedIn = userStore.user;  // Verifica si el usuario está autenticado
+  const isLoggedIn = userStore.user; 
   const isSuperAdmin = userStore.isSuperAdmin; // Ueberpruefung der Rolle von Amdin
 console.log("Am I logged in: " + isLoggedIn)
 
@@ -138,7 +138,7 @@ console.log("Am I logged in: " + isLoggedIn)
   if (!publicPages.includes(to.name) && !isLoggedIn) {
     console.warn("You must log in to continue here!");
     alert("You must log in to continue here!");
-    return next({ name: "login" }); // Redirige al login si no está autenticado
+    return next({ name: "login" });
   }
 
   next();
