@@ -33,7 +33,9 @@ async function login() {
 <template>
   <div class="main-container">
     <!-- Logo -->
+    <RouterLink to="/">
     <img src="@/assets/LogoSVG_CityPulse.svg" alt="CityPulseLogo" id="CityPulseLogo" />
+    </RouterLink>
 
     <!-- Login-Container -->
     <div class="log-in-container">

@@ -23,7 +23,10 @@ async function register() {
 
 <template>
   <div class="main-container">
-    <img src="@/assets/LogoSVG_CityPulse.svg" alt="CityPulseLogo" id="CityPulseLogo">
+
+    <RouterLink to="/">
+    <img src="@/assets/LogoSVG_CityPulse.svg" alt="CityPulseLogo" id="CityPulseLogo" />
+    </RouterLink>
 
     <div class="log-in-container">
       <form @submit.prevent="register">

@@ -1,9 +1,10 @@
 <template>
   <footer class="footer">
     <div class="footer-links">
-      <a href="AGB">AGB</a>
-      <a href="Impressum">Impressum</a>
-      <a href="Datenschutz">Datenschutz</a>
+      <RouterLink to="/AGB">AGB</RouterLink>
+      <RouterLink to="/Impressum">Impressum</RouterLink>
+      <RouterLink to="/Datenschutz">Datenschutz</RouterLink>
+
 
     </div>
     <div class="social-media">
