@@ -29,6 +29,8 @@ onMounted(async () => {
     console.log('Benutzername:', userStore.user?.fullName);
     console.log('E-Mail-Adresse:', userStore.user?.emailAddress);
     console.log('isAdmin:', userStore.user?.isSuperAdmin)
+    console.log('method:', userStore.getIsSuperAdmin)
+
     isSuperAdmin.value = userStore.user?.isSuperAdmin || false; 
   } catch (error) {
     console.error('Fehler beim Laden der Benutzerdaten:', error);

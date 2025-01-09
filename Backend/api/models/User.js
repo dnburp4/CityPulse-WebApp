@@ -36,18 +36,18 @@ module.exports = {
         maxLength: 120,
         example: 'Mary Sue van der McHenst'
       },
-      // phoneNumber: {
-      //   type: 'number',
-      //   description: 'Number of the customers name',
-      //   example: '015754241069'
-      // },
+      phoneNumber: {
+        type: 'number',
+        description: 'Number of the customers name',
+        example: '015754241069'
+      },
 
-      // address: {
-      //   type: 'string',
-      //   description: 'Address of the customer',
-      //   maxLength: 120,
-      //   example: 'Taegermoostr. 27, 78462 Konstanz'
-      // },
+      address: {
+        type: 'string',
+        description: 'Address of the customer',
+        maxLength: 120,
+        example: 'Taegermoostr. 27, 78462 Konstanz'
+      },
   
       isSuperAdmin: {
         type: 'boolean',

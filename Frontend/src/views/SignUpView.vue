@@ -9,11 +9,11 @@ const userStore = useUserStore();
 let email = ref("");
 let password = ref("");
 let fullName = ref("");
-// let address = ref("");
-// let phoneNumber = ref("");
+let phoneNumber = ref("");
+let address = ref("");
 
 async function register() {
-  userStore.signUp( email.value, password.value, fullName.value,);
+  userStore.signUp( email.value, password.value, fullName.value, phoneNumber.value, address.value);
         if (useUserStore.user) {
           console.log("Logged in")
         }
@@ -44,9 +44,8 @@ async function register() {
           <input type="password" v-model="password" placeholder="Ihr Passwort" />
         </div>
 
-        
 
-        <!-- <div class="input-container">
+        <div class="input-container">
           <label>Telefon-Nr: </label>
           <input v-model="phoneNumber" placeholder="015754241069" />
         </div>
@@ -54,7 +53,7 @@ async function register() {
         <div class="input-container">
           <label>Persönliche Adresse: </label>
           <input v-model="address" placeholder="Ihre Adresse" />
-        </div> -->
+        </div>
 
         <button type="submit" class="form-button">SignUp</button>
       </form>

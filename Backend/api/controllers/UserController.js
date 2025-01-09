@@ -32,6 +32,7 @@ module.exports = {
     },
 
     register: async function (req, res) {
+      sails.log.debug("Creating user...");
       let params = req.body;
       let newEmailAddress = params.emailAddress.toLowerCase();
   

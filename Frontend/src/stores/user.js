@@ -1,16 +1,22 @@
 import { defineStore } from "pinia";
 import axios from "axios";
-import router from "@/router"; // Import the router
+import router from "@/router";
 
 export const useUserStore = defineStore("user", {
   state: () => ({
-    user: null, // Benutzerinformationen speichern
-    userId: null, // Benutzer-ID speichern
-    isSuperAdmin: null, 
+    user: null, // Speichert die Benutzerinformationen
+    userId: null, // Speichert die Benutzer-ID
+    isSuperAdmin: null, // Gibt an, ob der Benutzer ein SuperAdmin ist
   }),
 
+  getters: {
+    // Getter für reaktiven Zugriff auf die Benutzer-ID und den SuperAdmin-Status
+    getUserId: (state) => state.userId,
+    getIsSuperAdmin: (state) => state.isSuperAdmin,
+  },
+
   actions: {
-    // Login-Methode
+    // Methode zum Einloggen
     async signIn(email, password) {
       const loginInformation = {
         emailAddress: email,
@@ -19,50 +25,46 @@ export const useUserStore = defineStore("user", {
 
       try {
         const response = await axios.post("/login", loginInformation);
-        this.user = response.data; // Speichert die gesamten Benutzerdaten
-        this.userId = response.data.id; // Speichert nur die Benutzer-ID
-        router.push("/"); // Weiterleitung nach erfolgreichem Login
+        this.user = response.data; // Speichert die Benutzerdaten
+        this.userId = response.data.id; // Speichert die Benutzer-ID
+        this.isSuperAdmin = response.data.isSuperAdmin; // Setzt den SuperAdmin-Status
+        router.push("/"); // Weiterleitung zur Startseite nach erfolgreichem Login
       } catch (error) {
-        console.error("Login fehlgeschlagen:", error);
+        console.error("Anmeldung fehlgeschlagen:", error.response?.data || error.message);
       }
     },
-    async signUp(email, password, fullName) {
-      let registerInformation = {
+
+    // Methode zum Registrieren
+    async signUp(email, password, fullName, phoneNumber, address) {
+      const registerInformation = {
         emailAddress: email,
         password: password,
         fullName: fullName,
+        phoneNumber: phoneNumber,
+        address: address,
       };
-    
+
       try {
         const response = await axios.post("/user", registerInformation);
-        this.user = response.data; // Speichere die Daten des Benutzers
-        router.push("/login"); // Weiterleitung nach erfolgreichem Sign-Up
+        this.user = response.data; // Speichert die Registrierungsdaten
+        router.push("/login"); // Weiterleitung zur Login-Seite nach erfolgreicher Registrierung
       } catch (error) {
-        console.error("Sign-Up fehlgeschlagen:", error.response?.data || error.message);
+        console.error("Registrierung fehlgeschlagen:", error.response?.data || error.message);
       }
-    
     },
 
-    // Methode zum Laden der Benutzerdaten, wenn nötig
+    // Methode zum Laden der Benutzerdaten vom Server
     async loadUserData() {
       try {
-        const response = await axios.get("/user"); // Hole alle Benutzerdaten vom Server
-        // Hier kannst du sicherstellen, dass nur der Benutzer mit der gespeicherten ID geladen wird
-        this.user = response.data.find(user => user.id === this.userId); 
+        const response = await axios.get("/user"); // Holt die Benutzerdaten vom Server
+        const user = response.data.find((user) => user.id === this.userId); // Sucht die Daten des aktuellen Benutzers
+        if (user) {
+          this.user = user;
+          this.isSuperAdmin = user.isSuperAdmin; // Aktualisiert den SuperAdmin-Status
+        }
       } catch (error) {
-        console.error("Fehler beim Laden der Benutzerdaten:", error);
+        console.error("Fehler beim Laden der Benutzerdaten:", error.response?.data || error.message);
       }
     },
-
-    // Methode zum Abrufen nur der Benutzer-ID
-    getUserId() {
-      return this.userId; // Gibt die gespeicherte Benutzer-ID zurück
-    }, 
-
-    getIsSuperAdmin() {
-      return this.isSuperAdmin; // Gibt an, ob der User ein Admin ist oder nicht
-    }
-
-
   },
 });

@@ -121,21 +121,28 @@ const router = createRouter({
 
 
 // Liste der öffentlichen Seiten
-const publicPages = [ 'AdminCenter','home', 'news', 'kontakt', 'login', 'signup', 'alleevents', 'events', 'crudTest', 'eventDetail', 'AdminNews', 'Impressum', 'AGB', 'Datenschutz', 'ticketkauf', 'pDaten', 'Zahlung'];
+const publicPages = ['home', 'news', 'kontakt', 'login', 'signup', 'alleevents', 'events', 'eventDetail', 'Impressum', 'Datenschutz', 'ticketkauf', 'pDaten', 'Zahlung'];
+const superAdminPages = ["AdminCenter", "AdminNews", "crud-test"];
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   const userStore = useUserStore();
-  const isPublicPage = publicPages.includes(to.name);
+  const isLoggedIn = userStore.user;  // Verifica si el usuario está autenticado
+  const isSuperAdmin = userStore.isSuperAdmin; // Ueberpruefung der Rolle von Amdin
+console.log("Am I logged in: " + isLoggedIn)
 
-  console.log('Navigating to:', to.name);
-  console.log('Is public page:', isPublicPage);
-
-  if (!isPublicPage && userStore.user == null) {
-    // Weiterleitung zur Login-Seite
-    next({ name: "login" });
-  } else {
-    next(); // Zugriff erlauben
+  if (superAdminPages.includes(to.name) && !isSuperAdmin) {
+    // Wenn eine superAdmin Page offnen mochte und der User kein Super Admin ist, dann geht man automatisch zu der Startseite
+    console.warn("You must be a SuperAdmin to see this page!");
+    return next({ name: "home" });
   }
+  if (!publicPages.includes(to.name) && !isLoggedIn) {
+    console.warn("You must log in to continue here!");
+    alert("You must log in to continue here!");
+    return next({ name: "login" }); // Redirige al login si no está autenticado
+  }
+
+  next();
+
 });
 
 export default router;
