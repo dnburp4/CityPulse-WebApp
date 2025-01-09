@@ -36,7 +36,7 @@ export const useUserStore = defineStore("user", {
       try {
         const response = await axios.post("/user", registerInformation);
         this.user = response.data; // Speichere die Daten des Benutzers
-        router.push("/restricted"); // Weiterleitung nach erfolgreichem Sign-Up
+        router.push("/login"); // Weiterleitung nach erfolgreichem Sign-Up
       } catch (error) {
         console.error("Sign-Up fehlgeschlagen:", error.response?.data || error.message);
       }
