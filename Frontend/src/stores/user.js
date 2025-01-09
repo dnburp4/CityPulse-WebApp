@@ -66,5 +66,10 @@ export const useUserStore = defineStore("user", {
         console.error("Fehler beim Laden der Benutzerdaten:", error.response?.data || error.message);
       }
     },
+
+
+    logout() {
+      this.user = null;
+  }
   },
 });

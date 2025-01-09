@@ -3,13 +3,16 @@ import EventCard from '@/components/EventCard.vue';
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import Footer from '@/components/Footer.vue';
+import HeaderStartseite from '@/components/HeaderStartseite.vue';
 import { useUserStore } from "../stores/user";
 
 const userStore = useUserStore();
 
 
 const events = ref([]);
-const isSuperAdmin = ref(false); // Standardwert ist false
+// const isSuperAdmin = ref(false); // Standardwert ist false
+const isSuperAdmin = userStore.user?.isSuperAdmin || false; 
+const isUserLoggedIn = !!userStore.user || false; 
 
 
 
@@ -22,25 +25,39 @@ onMounted(async () => {
   }
 });
 
-onMounted(async () => {
-  try {
-    await userStore.loadUserData(); // Benutzerdaten laden
+//Man braucht eigentlich keine besondere onMounted Funktion, um die User Information in die Kosole auszugeben. 
+// onMounted(async () => {
+//   try {
+//     await userStore.loadUserData(); // Benutzerdaten laden
+//     console.log('Aktueller Benutzer:', userStore.user);
+//     console.log('Benutzername:', userStore.user?.fullName);
+//     console.log('E-Mail-Adresse:', userStore.user?.emailAddress);
+//     console.log('isAdmin:', userStore.user?.isSuperAdmin)
+//     console.log('method:', userStore.getIsSuperAdmin)
+
+//     isSuperAdmin.value = userStore.user?.isSuperAdmin || false; 
+//   } catch (error) {
+//     console.error('Fehler beim Laden der Benutzerdaten:', error);
+//   }
+// });
     console.log('Aktueller Benutzer:', userStore.user);
-    console.log('Benutzername:', userStore.user?.fullName);
+    console.log('Fullname:', userStore.user?.fullName);
     console.log('E-Mail-Adresse:', userStore.user?.emailAddress);
     console.log('isAdmin:', userStore.user?.isSuperAdmin)
-    console.log('method:', userStore.getIsSuperAdmin)
-
-    isSuperAdmin.value = userStore.user?.isSuperAdmin || false; 
-  } catch (error) {
-    console.error('Fehler beim Laden der Benutzerdaten:', error);
-  }
-});
+    console.log('method getIsSuperAdmin:', userStore.getIsSuperAdmin)
+    console.log('Boolean variable isSuperAdmin:', isSuperAdmin)
+    console.log('Is the user logged in: ', isUserLoggedIn)
 
 
 </script>
 
 <template>
+
+<!-- Variable false oder true muss gegeben werden, um zu schauen, ob der User schon angemeldet ist oder nicht.
+ Wenn der User nicht angemeldet ist, wird er zu der Login seite weitergeleitet.
+ Wenn der User nicht angemledet ist, wird er zu der restricted view weitergeleitet, wo er seine Info sehen kann-->
+<HeaderStartseite :is-user-logged-in = "isUserLoggedIn" />
+
   
   <main class="content">
     <div class="events-container">
@@ -59,8 +76,7 @@ onMounted(async () => {
 
 <div v-if = "isSuperAdmin" class="admin-container">
 <p> Welcome back Admin {{ userStore.user.fullName }}</p>
-<RouterLink to="/AdminCenter" class="btn-custom">AdminCenter</RouterLink>  
-<!-- Klasse aus dem Komponent StartSeiteHeader -->
+<RouterLink to="/AdminCenter" class="btn-custom">AdminCenter</RouterLink> <!-- Klasse aus dem Komponent StartSeiteHeader -->
 </div> <!-- admin-container -->
 
 

@@ -1,3 +1,22 @@
+
+<script setup>
+import { useUserStore } from "../stores/user";
+
+
+// const userStore = useUserStore();
+// const isSuperAdminHeader = userStore.user?.isSuperAdmin || false; 
+
+
+defineProps({
+  isUserLoggedIn: { 
+    type: Boolean, 
+    required: true 
+  }, 
+});
+
+</script>
+
+
 <template> 
 
 <section class="hero">
@@ -6,16 +25,21 @@
             
             <img src="@/assets/LogoSVG_CityPulse.svg" alt="CityPulseLogo" id="CityPulseLogo">
 
+
+            <!-- if yhe  -->
+        <div v-if ="isUserLoggedIn">
+        <RouterLink to="/restricted" id="profile-icon">
+        <img src="@/assets/accountIcon.svg" alt="Profile Icon"> 
+        </RouterLink>
+        </div> 
+        <div v-else>
         <RouterLink to="/login" id="profile-icon">
         <img src="@/assets/accountIcon.svg" alt="Profile Icon"> 
         </RouterLink>
+        </div> 
 
 
-
-
-
-
-
+    
         </header>
 
                     

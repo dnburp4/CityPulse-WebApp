@@ -9,8 +9,6 @@ import Footer from '@/components/Footer.vue';
 <template>
 <Header title="AdminCenter"/>
 
-
-
 <main class = "alle-news-view">
 
 <RouterLink to="/AdminNews" class="btn-custom">News bearbeiten</RouterLink>
