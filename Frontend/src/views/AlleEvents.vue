@@ -16,7 +16,7 @@ const searchParams = ref({
 
 const loadEvents = async () => {
   try {
-    const response = await axios.get('http://localhost:1337/event/filter', { params: searchParams.value });
+    const response = await axios.get('/event/filter', { params: searchParams.value });
     events.value = response.data; 
   } catch (error) {
     console.error('Fehler beim Laden der Events:', error);

@@ -22,7 +22,7 @@ const editArticle = ref(null);
 // Read
 const loadNews = async () => {
   try {
-    const response = await axios.get('http://localhost:1337/news'); 
+    const response = await axios.get('/news'); 
     news.value = response.data; 
   } catch (error) {
     console.error('Fehler beim Laden der Nachrichten:', error);
@@ -32,7 +32,7 @@ const loadNews = async () => {
 // Create
 const createArticle = async () => {
   try {
-    await axios.post('http://localhost:1337/news', newArticle.value);
+    await axios.post('/news', newArticle.value);
     alert('Artikel erfolgreich erstellt');
     loadNews(); 
     newArticle.value = {
@@ -48,7 +48,7 @@ const createArticle = async () => {
 // Delete 
 const deleteArticle = async (id) => {
   try {
-    await axios.delete(`http://localhost:1337/news/${id}`);
+    await axios.delete(`/news/${id}`);
     alert('Artikel erfolgreich gelöscht');
     loadNews(); 
   } catch (error) {
@@ -60,7 +60,7 @@ const deleteArticle = async (id) => {
 const updateArticle = async () => {
   if (!editArticle.value) return;
   try {
-    await axios.put(`http://localhost:1337/news/${editArticle.value.id}`, editArticle.value);
+    await axios.put(`/news/${editArticle.value.id}`, editArticle.value);
     alert('Artikel erfolgreich aktualisiert');
     loadNews(); 
     editArticle.value = null; 

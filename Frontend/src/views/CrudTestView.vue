@@ -54,7 +54,7 @@ const createEvent = async () => {
 const updateEvent = async () => {
   if (!editEvent.value) return;
   try {
-    await axios.put(`http://localhost:1337/event/${String(editEvent.value.id)}`, editEvent.value);
+    await axios.put(`/event/${String(editEvent.value.id)}`, editEvent.value);
 
     alert('Event erfolgreich aktualisiert');
     loadEvents(); 
@@ -67,7 +67,7 @@ const updateEvent = async () => {
 //delete
 const deleteEvent = async (id) => {
   try {
-    await axios.delete(`http://localhost:1337/event/${id}`);
+    await axios.delete(`/event/${id}`);
     alert('Event erfolgreich gelöscht');
     loadEvents(); 
   } catch (error) {

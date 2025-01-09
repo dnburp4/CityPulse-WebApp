@@ -21,7 +21,7 @@ const price = computed(() => {
 
 const loadEvents = async () => {
   try {
-    const response = await axios.get('http://localhost:1337/event');
+    const response = await axios.get('/event');
     events.value = response.data;
   } catch (error) {
     console.error('Fehler beim Laden der Events:', error);
