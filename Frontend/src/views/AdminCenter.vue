@@ -13,7 +13,7 @@ import Footer from '@/components/Footer.vue';
 
 <RouterLink to="/AdminNews" class="btn-custom">News bearbeiten</RouterLink>
 <RouterLink to="/crud-test" class="btn-custom">Events bearbeiten</RouterLink>
-<RouterLink to="/" class="btn-custom">Users bearbeiten</RouterLink>
+<RouterLink to="/adminUser" class="btn-custom">Users bearbeiten</RouterLink>
 
 </main>
 <Footer />

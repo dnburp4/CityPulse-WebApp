@@ -7,6 +7,7 @@ import RestrictedView from '../views/RestrictedView.vue'
 
 
 import HomeView from '../views/HomeView.vue';
+import AdminUserView from '@/views/AdminUserView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -113,6 +114,11 @@ const router = createRouter({
       path: '/restricted',
       name: 'restricted',
       component: RestrictedView,
+    },
+    {
+      path: '/adminUser',
+      name: 'adminsUser',
+      component: AdminUserView,
     },
 
 
