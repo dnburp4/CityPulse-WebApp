@@ -32,11 +32,11 @@ onMounted(loadEvents);
 
 const proceedToNext = () => {
   if (selectedEvent.value && paymentMethod.value) {
-    console.log("Übergebene Event-ID:", selectedEvent.value.id); // Debugging
     router.push({
       name: 'pDaten',
       query: {
-        eventId: selectedEvent.value.id, // Nur die ID des Events übergeben
+        eventId: selectedEvent.value.id, // Event-ID
+        eventName: selectedEvent.value.name, // Event-Name
         ticketCount: ticketCount.value,
         paymentMethod: paymentMethod.value,
         totalPrice: price.value,
@@ -46,6 +46,7 @@ const proceedToNext = () => {
     alert('Bitte wählen Sie ein Event und eine Zahlungsmethode aus.');
   }
 };
+
 
 </script>
 

@@ -19,8 +19,6 @@ const sanitizeInput = (value) => {
 };
 
 const proceedToPayment = () => {
-  console.log("Empfangene Event-ID in pDaten:", route.query.eventId); // Debugging
-
   if (!fullName.value || !address.value || !houseNumber.value) {
     alert('Bitte füllen Sie alle Felder aus, bevor Sie fortfahren.');
     return;
@@ -33,13 +31,14 @@ const proceedToPayment = () => {
   router.push({
     name: 'Zahlung',
     query: {
-      eventId: route.query.eventId, // Die ID des Events weitergeben
+      eventId: route.query.eventId, // Event-ID
+      eventName: route.query.eventName, // Event-Name weitergeben
       ticketCount: route.query.ticketCount,
       paymentMethod: route.query.paymentMethod,
       totalPrice: route.query.totalPrice,
-      fullName: sanitizeInput(fullName.value),
-      address: sanitizeInput(address.value),
-      houseNumber: sanitizeInput(houseNumber.value),
+      fullName: fullName.value,
+      address: address.value,
+      houseNumber: houseNumber.value,
     },
   });
 };

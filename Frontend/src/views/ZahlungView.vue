@@ -31,16 +31,35 @@ onMounted(() => {
   }
 });
 
-const proceedToFinalTicket = () => {
-  router.push({
-    name: 'finalTicket',
-    query: {
-      event: JSON.stringify(selectedEvent.value),
+const proceedToFinalTicket = async () => {
+  try {
+    const payload = {
+      eventName: selectedEvent.value.name,
       ticketCount: ticketCount.value,
-      fullName: fullName.value,
-    },
-  });
+      totalPrice: totalPrice.value,
+      buyerName: fullName.value,
+      buyerAddress: route.query.address,
+      buyerHouseNumber: route.query.houseNumber,
+    };
+
+    const response = await axios.post('/ticketkauf', payload); // Speichert die Tickets im Backend
+    const orderId = response.data.orderId; // Erhalte die orderId aus der Backend-Antwort
+
+    console.log('Order ID:', orderId); // Debugging
+
+    router.push({
+      name: 'Rechnung',
+      query: {
+        orderId, // Leite die orderId weiter
+      },
+    });
+  } catch (error) {
+    console.error('Fehler beim Speichern der Tickets:', error);
+    alert('Fehler beim Ticketkauf. Bitte versuchen Sie es erneut.');
+  }
 };
+
+
 </script>
 
 <template>
@@ -53,7 +72,8 @@ const proceedToFinalTicket = () => {
       <div class="payment-summary">
         <h2><i class="icon">&#9432;</i> Ticketkauf</h2>
 
-        <p><strong>Event:</strong> {{ selectedEvent?.value?.name || 'Nicht verfügbar' }}</p>
+        <p><strong>Event:</strong> {{ route.query.eventName || 'Nicht verfügbar' }}</p>
+
         <p><strong>Anzahl Tickets:</strong> {{ ticketCount }}</p>
         <p><strong>Name:</strong> {{ fullName }}</p>
         <p><strong>Preis:</strong> {{ totalPrice }} €</p>

@@ -53,6 +53,14 @@ module.exports.routes = {
 
   'GET /event/:id': { controller: 'EventController', action: 'findOne' },
 
+
+  'POST /ticketkauf': { controller: 'TicketkaufController', action: 'create' },
+
+  'GET /ticketkauf': { controller: 'TicketkaufController', action: 'find' },
+
+
+
+
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

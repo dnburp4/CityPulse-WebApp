@@ -122,12 +122,19 @@ const router = createRouter({
     },
 
 
+    {
+      path: '/rechnung',
+      name: 'Rechnung',
+      component: () => import('@/views/Rechnung.vue'),
+    },
+    
+
   ],
 })
 
 
 // Liste der öffentlichen Seiten
-const publicPages = ['home', 'news', 'kontakt', 'login', 'signup', 'alleevents', 'events', 'eventDetail', 'Impressum', 'Datenschutz', 'ticketkauf', 'pDaten', 'Zahlung', 'AGB'];
+const publicPages = ['home', 'news', 'kontakt', 'login', 'signup', 'alleevents', 'events', 'eventDetail', 'Impressum', 'Datenschutz', 'ticketkauf', 'pDaten', 'Zahlung', 'AGB', 'rechnung', 'Rechnung'];
 const superAdminPages = ["AdminCenter", "AdminNews", "crud-test"];
 
 router.beforeEach(async (to, from, next) => {
