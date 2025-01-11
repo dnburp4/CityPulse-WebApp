@@ -12,6 +12,6 @@ module.exports = {
         if (!req.session.userId) { res.sendStatus(401); }
         let user = req.session.user;
 
-        res.json({message: "Hello "+user.fullName+".This message is protected!"})
+        res.json({message: "Hello "+user.fullName+".This was a surprise and you found it"})
     }
 };
