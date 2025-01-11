@@ -134,7 +134,7 @@ const router = createRouter({
 
 
 // Liste der öffentlichen Seiten
-const publicPages = ['home', 'news', 'kontakt', 'login', 'signup', 'alleevents', 'events', 'eventDetail', 'Impressum', 'Datenschutz', 'ticketkauf', 'pDaten', 'Zahlung', 'AGB', 'rechnung', 'Rechnung'];
+const publicPages = ['home', 'news', 'kontakt', 'login', 'signup', 'alleevents', 'events', 'eventDetail', 'Impressum', 'Datenschutz', 'AGB'];
 const superAdminPages = ["AdminCenter", "AdminNews", "crud-test"];
 
 router.beforeEach(async (to, from, next) => {
