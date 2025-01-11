@@ -1,7 +1,11 @@
 <script setup>
 import Header from '@/components/Header.vue'; 
 import Footer from '@/components/Footer.vue'; 
+
+
 </script>
+
+
 
 
 <template>
@@ -42,11 +46,11 @@ import Footer from '@/components/Footer.vue';
         
         <div class="contact-header">
     <div class="phone-header">
-      <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Telefon-Symbol" class="phone-icon" />
+      <img src="/src/assets/telephone.png" alt="Telefon-Symbol" class="phone-icon" />
       <span class="phone-text">+49 123 456 789</span>
     </div>
     <div class="location-header">
-      <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Standort-Symbol" class="location-icon" />
+      <img src="/src/assets/location.png" alt="Standort-Symbol" class="location-icon" />
       <span class="location-text">Alfred-Wachtel-Straße 8, 78462 Konstanz</span>
     </div>
   </div>
@@ -85,6 +89,7 @@ padding: 20px;
 max-width: 800px;
 margin: 0 auto;
 text-align: center;
+
 }
 
 .kontakt-container h1 {
@@ -122,6 +127,7 @@ width: 100%;
 padding: 10px;
 border: 1px solid #ccc;
 border-radius: 5px;
+box-sizing: border-box;
 }
 
 button {

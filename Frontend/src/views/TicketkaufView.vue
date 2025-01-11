@@ -32,10 +32,11 @@ onMounted(loadEvents);
 
 const proceedToNext = () => {
   if (selectedEvent.value && paymentMethod.value) {
+    console.log("Übergebene Event-ID:", selectedEvent.value.id); // Debugging
     router.push({
-      name: 'pDaten', 
+      name: 'pDaten',
       query: {
-        eventId: selectedEvent.value?.id,
+        eventId: selectedEvent.value.id, // Nur die ID des Events übergeben
         ticketCount: ticketCount.value,
         paymentMethod: paymentMethod.value,
         totalPrice: price.value,
@@ -45,6 +46,7 @@ const proceedToNext = () => {
     alert('Bitte wählen Sie ein Event und eine Zahlungsmethode aus.');
   }
 };
+
 </script>
 
 <template>
@@ -81,13 +83,15 @@ const proceedToNext = () => {
         <select id="payment-method" v-model="paymentMethod">
           <option value="" disabled selected>Zahlungsmethode wählen</option>
           <option value="paypal">PayPal</option>
-          <option value="bank">Bank</option>
-          <option value="handy">Handy</option>
+          <option value="bank">Apple Pay</option>
+          <option value="handy">Giropay</option>
+          <option value="handy">SEPA</option>
+          <option value="handy">VISA</option>
         </select>
       </div>
 
       <div class="form-group">
-        <label for="price">Preis</label>
+        <label for="price">Preis in €</label>
         <input id="price" type="text" :value="price" readonly />
       </div>
 
@@ -149,6 +153,7 @@ input {
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
+  box-sizing: border-box;
 }
 
 select:focus,

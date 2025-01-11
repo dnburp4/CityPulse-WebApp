@@ -8,29 +8,43 @@ import Footer from '@/components/Footer.vue';
 const route = useRoute();
 const router = useRouter();
 
-
 const fullName = ref('');
 const address = ref('');
 const houseNumber = ref('');
 
+const sanitizeInput = (value) => {
+  const div = document.createElement('div');
+  div.textContent = value;
+  return div.innerHTML;
+};
 
 const proceedToPayment = () => {
+  console.log("Empfangene Event-ID in pDaten:", route.query.eventId); // Debugging
+
+  if (!fullName.value || !address.value || !houseNumber.value) {
+    alert('Bitte füllen Sie alle Felder aus, bevor Sie fortfahren.');
+    return;
+  }
+
+  const sanitizedFullName = sanitizeInput(fullName.value);
+  const sanitizedAddress = sanitizeInput(address.value);
+  const sanitizedHouseNumber = sanitizeInput(houseNumber.value);
+
   router.push({
     name: 'Zahlung',
     query: {
-      eventId: route.query.eventId,
-      eventName: route.query.eventName,
+      eventId: route.query.eventId, // Die ID des Events weitergeben
       ticketCount: route.query.ticketCount,
       paymentMethod: route.query.paymentMethod,
       totalPrice: route.query.totalPrice,
-      fullName: fullName.value,
-      address: address.value,
-      houseNumber: houseNumber.value,
+      fullName: sanitizeInput(fullName.value),
+      address: sanitizeInput(address.value),
+      houseNumber: sanitizeInput(houseNumber.value),
     },
   });
 };
-</script>
 
+</script>
 
 <template>
   <div class="personal-data-view">
@@ -46,6 +60,7 @@ const proceedToPayment = () => {
           type="text"
           v-model="fullName"
           placeholder="Ihr voller Name"
+          maxlength="50"
         />
       </div>
 
@@ -56,6 +71,7 @@ const proceedToPayment = () => {
           type="text"
           v-model="address"
           placeholder="Ihre Adresse"
+          maxlength="50"
         />
       </div>
 
@@ -66,6 +82,7 @@ const proceedToPayment = () => {
           type="text"
           v-model="houseNumber"
           placeholder="Ihre Hausnummer"
+          maxlength="100"
         />
       </div>
 
@@ -75,6 +92,7 @@ const proceedToPayment = () => {
     <Footer />
   </div>
 </template>
+
 
 
 <style scoped>
@@ -95,6 +113,7 @@ const proceedToPayment = () => {
   background: white;
   color: #333;
   border-radius: 8px;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -120,6 +139,7 @@ input {
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
+  box-sizing: border-box;
 }
 
 .submit-button {

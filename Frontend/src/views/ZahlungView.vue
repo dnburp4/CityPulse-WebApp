@@ -1,62 +1,68 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 
-
 const router = useRouter();
+const route = useRoute();
 
-const route = useRoute(); 
-const eventName = route.query.eventName;
-const eventId = route.query.eventId;
-const ticketCount = route.query.ticketCount;
-const paymentMethod = route.query.paymentMethod;
-const totalPrice = route.query.totalPrice;
-const fullName = route.query.fullName;
-const address = route.query.address;
-const houseNumber = route.query.houseNumber;
-
+import axios from 'axios';
 
 const selectedEvent = ref(null);
+const ticketCount = ref(route.query.ticketCount || 0);
+const fullName = ref(route.query.fullName || '');
+const totalPrice = ref(route.query.totalPrice || 0);
 
-
+const loadEventDetails = async () => {
+  console.log("Lade Event mit ID:", route.query.eventId); // Debugging
+  try {
+    const response = await axios.get(`/event/${route.query.eventId}`); // API-Call basierend auf der ID
+    selectedEvent.value = response.data;
+    console.log("Geladene Event-Details:", selectedEvent.value); // Debugging
+  } catch (error) {
+    console.error("Fehler beim Laden des Events:", error);
+  }
+};
 
 onMounted(() => {
-  const query = route.query;
-  selectedEvent.value = JSON.parse(query.event);
-  ticketCount.value = query.ticketCount;
-  fullName.value = query.fullName;
-  totalPrice.value = query.totalPrice;
+  if (route.query.eventId) {
+    loadEventDetails(); // Event-Details laden
+  }
 });
 
 const proceedToFinalTicket = () => {
-  router.push({ name: 'finalTicket', query: { event: JSON.stringify(selectedEvent.value), ticketCount: ticketCount.value, fullName: fullName.value } });
+  router.push({
+    name: 'finalTicket',
+    query: {
+      event: JSON.stringify(selectedEvent.value),
+      ticketCount: ticketCount.value,
+      fullName: fullName.value,
+    },
+  });
 };
 </script>
 
 <template>
   <div class="zahlung-view">
-   
     <Header title="Zahlung" />
 
-   
     <main class="payment-container">
       <h1>Zahlung</h1>
 
       <div class="payment-summary">
         <h2><i class="icon">&#9432;</i> Ticketkauf</h2>
 
-        <p><strong>Event:</strong> {{ selectedEvent?.value?.name }}</p>
+        <p><strong>Event:</strong> {{ selectedEvent?.value?.name || 'Nicht verfügbar' }}</p>
         <p><strong>Anzahl Tickets:</strong> {{ ticketCount }}</p>
         <p><strong>Name:</strong> {{ fullName }}</p>
         <p><strong>Preis:</strong> {{ totalPrice }} €</p>
+
 
         <button class="buy-button" @click="proceedToFinalTicket">Buy</button>
       </div>
     </main>
 
-    
     <Footer />
   </div>
 </template>
