@@ -66,6 +66,12 @@ module.exports = {
   
   So, while this \`isSuperAdmin\` demarcation might not be the right approach forever, it's a good place to start.`
       },
+
+
+      tickets: {
+        collection: 'ticketkauf', 
+        via: 'userId', 
+      },
     },
   
   

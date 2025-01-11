@@ -5,6 +5,11 @@ module.exports = {
     buyerName: { type: 'string', required: true },
     buyerAddress: { type: 'string', required: true },
     buyerHouseNumber: { type: 'string', required: true },
-    orderId: { type: 'string', required: true }, // Eindeutige Bestell-ID
+
+    
+    userId: {
+      model: 'user', 
+      required: true,
+    },
   },
 };
