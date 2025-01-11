@@ -3,8 +3,9 @@ import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import { useUserStore } from "../stores/user";
 import Header from '@/components/Header.vue';
+import { RouterLink, useRouter } from 'vue-router';
 
-
+const router = useRouter();
 const userStore = useUserStore();
 let secret = ref("");
 // let isLoading = ref(true); // Ladezustand hinzufügen
@@ -39,6 +40,9 @@ console.log('isAdmin:', userStore.user?.isSuperAdmin)
 const headerTitle = `Welcome ${userStore.user?.fullName || 'User'}`;
 const isSuperAdmin = userStore.user?.isSuperAdmin || false; 
 
+const goToTickets = () => {
+  router.push('/rechnung'); // Leitet den Benutzer zur /rechnung-View weiter
+};
 
 </script>
 
@@ -69,6 +73,9 @@ const isSuperAdmin = userStore.user?.isSuperAdmin || false;
         <p v-if="!isSuperAdmin"> Addresse: {{ userStore.user?.address }}</p>
 
         <p v-if="!isSuperAdmin"> Handy-Nummer: {{ userStore.user.phoneNumber }}</p>
+
+        <button class="btn-ticket" @click="goToTickets">Tickets</button>
+
 
 <div v-if="isSuperAdmin">
         <p class="status-text">Sie sind als Admin registriert</p>
@@ -156,6 +163,19 @@ background-color: #ffffff;
     margin-bottom: 100px;
     font-family: "Rubik", sans-serif;
 }
+
+.btn-ticket {
+  background-color: #57164a;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  font-family: "Rubik", sans-serif;
+  margin-top: 20px;
+}
+
 
 .btn-white:hover {
   background-color: #e9cb8f; 
