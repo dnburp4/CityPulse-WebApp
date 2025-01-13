@@ -7,7 +7,7 @@ import Footer from '@/components/Footer.vue';
 <template>
 
   <div class="datenschutz-view">
-    <Header title="Alle Events"/>
+    <Header title="Datenschutz"/>
 
     <div class="datenschutz-container">
       <h1>Datenschutzerklärung</h1>
@@ -71,7 +71,7 @@ import Footer from '@/components/Footer.vue';
 
 <style scoped>
 
-.kontakt-view {
+.datenschutz-view {
   background-color: #f4f4f4;
   color: #333;
   min-height: 100vh;
@@ -80,60 +80,79 @@ import Footer from '@/components/Footer.vue';
   justify-content: space-between;
 }
 
-.kontakt-container {
+.datenschutz-container {
   padding: 20px;
   max-width: 800px;
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
 }
 
-.kontakt-container h1 {
+.datenschutz-container h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
 
-.kontakt-container p {
-  margin-bottom: 2rem;
-  font-size: 1.1rem;
+.datenschutz-container h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.kontakt-form {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.datenschutz-container p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
-.form-group {
-  margin-bottom: 15px;
-  text-align: left;
+.datenschutz-container ul {
+  margin-left: 20px;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+.datenschutz-container ul li {
+  margin-bottom: 0.5rem;
 }
 
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .datenschutz-container {
+    padding: 15px;
+  }
+
+  .datenschutz-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .datenschutz-container h2 {
+    font-size: 1.4rem;
+  }
+
+  .datenschutz-container p {
+    font-size: 0.95rem;
+  }
+
+  .datenschutz-container ul li {
+    font-size: 0.95rem;
+  }
 }
 
-button {
-  padding: 10px 20px;
-  background-color: #57164a;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
+@media (max-width: 480px) {
+  .datenschutz-container {
+    padding: 10px;
+  }
 
-button:hover {
-  background-color: #7d2d6b;
-}
+  .datenschutz-container h1 {
+    font-size: 1.5rem;
+  }
 
+  .datenschutz-container h2 {
+    font-size: 1.2rem;
+  }
+
+  .datenschutz-container p {
+    font-size: 0.9rem;
+  }
+
+  .datenschutz-container ul li {
+    font-size: 0.9rem;
+  }
+}
 </style>

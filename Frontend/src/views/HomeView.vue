@@ -76,9 +76,8 @@ onMounted(async () => {
 
 <div v-if = "isSuperAdmin" class="admin-container">
 <p> Welcome back Admin {{ userStore.user.fullName }}</p>
-<RouterLink to="/AdminCenter" class="btn-custom">AdminCenter</RouterLink> <!-- Klasse aus dem Komponent StartSeiteHeader -->
-</div> <!-- admin-container -->
-
+<RouterLink to="/AdminCenter" class="btn-custom">AdminCenter</RouterLink> 
+</div> 
 
 
   </main>

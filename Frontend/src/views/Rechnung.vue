@@ -19,10 +19,6 @@ const loadTickets = async () => {
 };
 
 
-
-
-
-
 onMounted(loadTickets);
 </script>
 

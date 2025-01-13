@@ -6,8 +6,6 @@ import Footer from '@/components/Footer.vue';
 
 <template>
 
-
-
 <div class="impressum-view">
     <Header title="Impressum"/>
 
@@ -61,7 +59,7 @@ import Footer from '@/components/Footer.vue';
 
 <style scoped>
 
-.kontakt-view {
+.impressum-view {
   background-color: #f4f4f4;
   color: #333;
   min-height: 100vh;
@@ -70,60 +68,77 @@ import Footer from '@/components/Footer.vue';
   justify-content: space-between;
 }
 
-.kontakt-container {
+.impressum-container {
   padding: 20px;
   max-width: 800px;
   margin: 0 auto;
-  text-align: center;
+  text-align: left; 
 }
 
-.kontakt-container h1 {
+
+.impressum-container h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
 
-.kontakt-container p {
-  margin-bottom: 2rem;
-  font-size: 1.1rem;
+.impressum-container h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.kontakt-form {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.impressum-container p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
-.form-group {
-  margin-bottom: 15px;
-  text-align: left;
+.impressum-container h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .impressum-container {
+    padding: 15px;
+  }
+
+  .impressum-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .impressum-container h2 {
+    font-size: 1.4rem;
+  }
+
+  .impressum-container h3 {
+    font-size: 1.2rem;
+  }
+
+  .impressum-container p {
+    font-size: 0.95rem;
+  }
 }
 
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
+@media (max-width: 480px) {
+  .impressum-container {
+    padding: 10px;
+  }
 
-button {
-  padding: 10px 20px;
-  background-color: #57164a;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
+  .impressum-container h1 {
+    font-size: 1.5rem;
+  }
 
-button:hover {
-  background-color: #7d2d6b;
-}
+  .impressum-container h2 {
+    font-size: 1.2rem;
+  }
 
+  .impressum-container h3 {
+    font-size: 1rem;
+  }
+
+  .impressum-container p {
+    font-size: 0.9rem;
+  }
+}
 </style>

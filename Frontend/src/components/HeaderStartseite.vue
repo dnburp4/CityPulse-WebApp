@@ -46,7 +46,7 @@ defineProps({
         <RouterLink to="/alleevents" class="btn-custom btn-primary">Aktuelle Events</RouterLink>
 
 
-        <p>Lust auf coole Events mit Familie und Freunde?</p>
+        <p>Lust auf coole Events mit der Familie und Freunden?</p>
             <p>CityPulse zeigt dir die angesagtesten Events der Stadt!</p>   
             <p>Check das Feedback, hol dir Tickets und genieß die beste Zeit der Stadt!</p>
 

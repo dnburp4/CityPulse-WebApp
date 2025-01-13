@@ -2,9 +2,9 @@
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import axios from 'axios';
-import Header from '@/components/Header.vue'; // Header-Komponente
-import Footer from '@/components/Footer.vue'; // Footer-Komponente
-import EventCard from '@/components/EventCard.vue'; // EventCard-Komponente
+import Header from '@/components/Header.vue'; 
+import Footer from '@/components/Footer.vue'; 
+import EventCard from '@/components/EventCard.vue'; 
 
 const route = useRoute(); // Zugriff auf die Routenparameter
 const router = useRouter(); // Router für Navigation
@@ -20,7 +20,7 @@ const loadEvent = async () => {
   }
 };
 
-onMounted(loadEvent); // Lädt die Eventdaten, wenn die Komponente gemountet wird
+onMounted(loadEvent); // Lädt die Eventdaten wenn die Komponente gemountet wird
 
 // Funktion zur Navigation zur TicketKaufView
 const navigateToTicketKauf = () => {
@@ -37,16 +37,16 @@ const navigateToTicketKauf = () => {
 
 <template>
   <div class="event-detail-view">
-    <!-- Header -->
+    
     <Header title="Event Details" />
 
     <main class="event-container">
       <h1>Event Details</h1>
 
-      <!-- Ladeanzeige -->
+      
       <div v-if="!event">Loading...</div>
 
-      <!-- Event anzeigen -->
+      
       <div v-else>
         <EventCard
           :id="event.id"
@@ -57,23 +57,23 @@ const navigateToTicketKauf = () => {
           :bewertung="event.bewertung"
         />
 
-        <!-- Ticket kaufen Button -->
+        
         <button class="ticket-button" @click="navigateToTicketKauf">
           Ticket kaufen
         </button>
       </div>
     </main>
 
-    <!-- Footer -->
+    
     <Footer />
   </div>
 </template>
 
 <style scoped>
 .event-detail-view {
-  background-color: #f4f4f4; /* Hintergrundfarbe */
-  color: #333; /* Textfarbe */
-  min-height: 100vh; /* Mindestens die Höhe des Viewports */
+  background-color: #000000; 
+  color: #ffffff; 
+  min-height: 100vh; 
   display: flex;
   flex-direction: column;
   justify-content: space-between;

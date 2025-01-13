@@ -10,7 +10,7 @@ import Footer from '@/components/Footer.vue';
     <Header title="Allgemeine Geschäftsbedingungen (AGB)" />
 
     <div class="agb-container">
-      <h1>Allgemeine Geschäftsbedingungen</h1>
+      
 
       <section>
         <h2>Einleitung</h2>
@@ -58,7 +58,7 @@ import Footer from '@/components/Footer.vue';
 
 <style scoped>
 
-.kontakt-view {
+.agb-view {
   background-color: #f4f4f4;
   color: #333;
   min-height: 100vh;
@@ -67,60 +67,75 @@ import Footer from '@/components/Footer.vue';
   justify-content: space-between;
 }
 
-.kontakt-container {
+.agb-container {
   padding: 20px;
   max-width: 800px;
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
 }
 
-.kontakt-container h1 {
+.agb-container h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
 
-.kontakt-container p {
-  margin-bottom: 2rem;
-  font-size: 1.1rem;
+.agb-container h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.kontakt-form {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.agb-container p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
-.form-group {
-  margin-bottom: 15px;
-  text-align: left;
+.agb-container ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 1.5rem;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+.agb-container ul li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .agb-container {
+    padding: 15px;
+  }
+
+  .agb-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .agb-container h2 {
+    font-size: 1.4rem;
+  }
+
+  .agb-container p, .agb-container ul li {
+    font-size: 0.95rem;
+  }
 }
 
-button {
-  padding: 10px 20px;
-  background-color: #57164a;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
+@media (max-width: 480px) {
+  .agb-container {
+    padding: 10px;
+  }
 
-button:hover {
-  background-color: #7d2d6b;
-}
+  .agb-container h1 {
+    font-size: 1.5rem;
+  }
 
+  .agb-container h2 {
+    font-size: 1.2rem;
+  }
+
+  .agb-container p, .agb-container ul li {
+    font-size: 0.9rem;
+  }
+}
 </style>

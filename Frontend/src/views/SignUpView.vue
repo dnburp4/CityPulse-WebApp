@@ -5,19 +5,49 @@ import Footer from '@/components/Footer.vue';
 
 const userStore = useUserStore();
 
-// Reaktive Variablen
 let email = ref("");
 let password = ref("");
 let fullName = ref("");
 let phoneNumber = ref("");
 let address = ref("");
+let errorMessage = ref(""); // Variable für Fehlermeldungen
 
 async function register() {
-  userStore.signUp( email.value, password.value, fullName.value, phoneNumber.value, address.value);
-        if (useUserStore.user) {
-          console.log("Logged in")
-        }
-  
+  // Prüfen ob alle Felder ausgefüllt sind
+  if (!email.value || !password.value || !fullName.value || !phoneNumber.value || !address.value) {
+    errorMessage.value = "Alle Felder müssen ausgefüllt werden.";
+    return; // Funktion abbrechen, wenn ein Feld leer ist
+  }
+
+  // Telefonnummer darf nur Zahlen enthalten
+  if (!/^[0-9]+$/.test(phoneNumber.value)) {
+    errorMessage.value = "Die Telefonnummer darf nur Zahlen enthalten.";
+    return; // Funktion abbrechen, wenn Telefonnummer ungültig ist
+  }
+
+  // Passwortlänge prüfen
+  if (password.value.length < 4 || password.value.length > 30) {
+    errorMessage.value = "Das Passwort muss zwischen 4 und 30 Zeichen lang sein.";
+    return; 
+  }
+
+  try {
+    // Registrierung durchführen
+    await userStore.signUp(email.value, password.value, fullName.value, phoneNumber.value, address.value);
+    if (userStore.user) {
+      console.log("Logged in");
+    }
+  } catch (error) {
+    console.error("Registration failed:", error);
+    // Überprüfen ob die E-Mail bereits existiert
+    if (error.response && error.response.status === 409) { 
+      errorMessage.value = "Diese E-Mail-Adresse ist bereits registriert.";
+    } else if (error.response && error.response.data && error.response.data.message.includes("E-Mail bereits registriert")) {
+      errorMessage.value = "Diese E-Mail-Adresse ist bereits registriert.";
+    } else {
+      errorMessage.value = "Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut.";
+    }
+  }
 }
 </script>
 
@@ -31,6 +61,8 @@ async function register() {
     <div class="log-in-container">
       <form @submit.prevent="register">
         <h1>SignUp</h1>
+
+        <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
 
         <div class="input-container">
           <label>Name: </label>

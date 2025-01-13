@@ -4,24 +4,21 @@ import { useRouter } from 'vue-router';
 import { useUserStore } from "../stores/user";
 import Footer from '@/components/Footer.vue';
 
-// Daten und Router
 const userStore = useUserStore();
 const router = useRouter();
 
-// Referenzen für Eingaben
 let email = ref("");
 let password = ref("");
 let errorMessage = ref("");
 
-// Login-Funktion
 async function login() {
   try {
     // Benutzer anmelden
     await userStore.signIn(email.value, password.value);
-    // Wenn Benutzer erfolgreich angemeldet ist, weiterleiten
+    // Wenn Benutzer erfolgreich angemeldet ist weiterleiten
     if (userStore.user) {
       console.log("Logged in");
-      router.push('/restricted'); // Weiterleitung zur Restricted View
+      router.push('/restricted'); 
     }
   } catch (error) {
     console.error("Login failed:", error);
@@ -32,36 +29,34 @@ async function login() {
 
 <template>
   <div class="main-container">
-    <!-- Logo -->
+   
     <RouterLink to="/">
     <img src="@/assets/LogoSVG_CityPulse.svg" alt="CityPulseLogo" id="CityPulseLogo" />
     </RouterLink>
 
-    <!-- Login-Container -->
     <div class="log-in-container">
       <form @submit.prevent="login">
         <h1>Login</h1>
 
-        <!-- Fehlermeldung -->
         <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
 
-        <!-- Eingabe Benutzername -->
+        
         <div class="input-container">
           <label for="email">Nutzername:</label>
           <input id="email" type="email" v-model="email" placeholder="E-Mail eingeben" required />
         </div>
 
-        <!-- Eingabe Passwort -->
+       
         <div class="input-container">
           <label for="password">Passwort:</label>
           <input id="password" type="password" v-model="password" placeholder="Passwort eingeben" required />
         </div>
 
-        <!-- Login-Button -->
+       
         <button type="submit" class="form-button">Login</button>
       </form>
 
-      <!-- Registrierung-Link -->
+      
       <RouterLink to="/signup" class="account-registrieren-text">
         <h2>Noch kein Account?</h2>
         <h2>Jetzt registrieren</h2>
@@ -69,7 +64,7 @@ async function login() {
     </div>
   </div>
 
-  <!-- Footer -->
+  
   <Footer />
 </template>
 
