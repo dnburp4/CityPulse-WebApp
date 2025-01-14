@@ -61,6 +61,8 @@ h1 {
   font-size: 1.5rem;
   margin: 0;
   text-align: center;
+  font-family: 'Rubik', sans-serif;
+
 }
 
 button {
