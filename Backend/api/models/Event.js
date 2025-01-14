@@ -24,14 +24,6 @@ module.exports = {
     },
 
 
-    // beforeDestroy: async function(criteria, proceed) {
-    //   sails.log.debug("Cascade deleting tickets for Event ID:", criteria.where.id);
-  
-    //   // Lösche zugehörige Tickets
-    //   await Ticket.destroy({ forEvent: criteria.where.id });
-  
-    //   return proceed();
-    // }
 
 
 

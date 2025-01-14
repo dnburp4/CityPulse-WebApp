@@ -3,10 +3,6 @@
 import { useUserStore } from "../stores/user";
 
 
-// const userStore = useUserStore();
-// const isSuperAdminHeader = userStore.user?.isSuperAdmin || false; 
-
-
 defineProps({
   isUserLoggedIn: { 
     type: Boolean, 
@@ -92,7 +88,7 @@ h1 {
     width: 100%; 
     height: 100%;
     position: absolute;
-    top: 45px;
+    top: 35px;
     right: 10px;
     width: 40px;
     height: 40px;

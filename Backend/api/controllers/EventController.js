@@ -76,7 +76,7 @@ module.exports = {
       ticketUpdates.datum = req.body.datum; 
     }
 
-    //<
+  
     if (Object.keys(ticketUpdates).length > 0) {
       await Ticket.update({ forEvent: req.params.id }).set(ticketUpdates);
       sails.log.debug("Tickets were updated...")

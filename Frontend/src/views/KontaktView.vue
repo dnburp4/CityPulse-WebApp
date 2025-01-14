@@ -56,7 +56,7 @@ import Footer from '@/components/Footer.vue';
   </div>
 
   <p></p>
-        <div class="map">
+        <div class="map"> 
           <iframe
              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2696.911438654756!2d9.170347676486456!3d47.66247297909496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479aa4d8ddc3b72b%3A0x9a8faec42d7c7c11!2sHTWG%20Konstanz!5e0!3m2!1sen!2sde!4v1691255574625!5m2!1sen!2sde"
             width="100%"

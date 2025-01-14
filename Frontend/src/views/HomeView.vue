@@ -53,9 +53,7 @@ onMounted(async () => {
 
 <template>
 
-<!-- Variable false oder true muss gegeben werden, um zu schauen, ob der User schon angemeldet ist oder nicht.
- Wenn der User nicht angemeldet ist, wird er zu der Login seite weitergeleitet.
- Wenn der User nicht angemledet ist, wird er zu der restricted view weitergeleitet, wo er seine Info sehen kann-->
+
 <HeaderStartseite :is-user-logged-in = "isUserLoggedIn" />
 
   

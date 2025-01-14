@@ -21,38 +21,7 @@ onMounted(async () => {
   }
 });
 
-  // {
-  //   newsTitle: "Cultural Extravaganza at the Annual Arts Festival",
-  //   newsContent: "The Annual Arts Festival showcased a vibrant mix of music, dance, and theater, celebrating diverse cultures from around the world.", 
-  //   bild: "/src/assets/images/job.jpg"
-
-  // },
-  // {
-  //   newsTitle: "Diwali Celebrations Light Up the City",
-  //   newsContent: "This year's Diwali festival was marked by spectacular fireworks, traditional sweets, and colorful rangoli decorations, bringing joy to the community.", 
-  //   bild: "/src/assets/images/job.jpg"
-
-  // },
-  // {
-  //   newsTitle: "Oktoberfest: A Celebration of Bavarian Traditions",
-  //   newsContent: "Oktoberfest attracted thousands of visitors who enjoyed traditional German beer, food, and folk music in a lively atmosphere.", 
-  //   bild: "/src/assets/images/job.jpg"
-
-  // },
-  // {
-  //   newsTitle: "Carnival Parade Brings Color and Joy",
-  //   newsContent: "The annual Carnival parade featured elaborate costumes, vibrant floats, and energetic performances, drawing crowds from all over the city.",
-  //   bild: "/src/assets/images/job.jpg"
-
-  // },
-  // {
-  //   newsTitle: "New Year's Eve Party at the Grand Plaza",
-  //   newsContent: "The Grand Plaza hosted a spectacular New Year's Eve party with live music, dancing, and a breathtaking fireworks display to ring in the new year.", 
-  //   bild: "/src/assets/images/job.jpg"
-  // }
-
-
-
+ 
 
 </script>
 

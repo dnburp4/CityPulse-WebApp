@@ -6,7 +6,7 @@ export const useUserStore = defineStore("user", {
   state: () => ({
     user: null, // Speichert die Benutzerinformationen
     userId: null, // Speichert die Benutzer-ID
-    isSuperAdmin: null, // Gibt an, ob der Benutzer ein SuperAdmin ist
+    isSuperAdmin: null, // Gibt an ob der Benutzer ein SuperAdmin ist
   }),
 
   getters: {

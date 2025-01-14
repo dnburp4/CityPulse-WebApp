@@ -6,7 +6,7 @@ import EventCard from '@/components/EventCard.vue';
 import { ref, onMounted } from 'vue'; 
 import axios from 'axios'; 
 
-//mann soll nach Name und nach Typ filtern können -müssen wir später noch erweitern
+
 const events = ref([]); 
 const searchParams = ref({
   name: '',
@@ -26,7 +26,7 @@ const loadEvents = async () => {
 
 onMounted(loadEvents);
 
-//können wir später noch mit anderen Parametern erweitern - Aufgabe e)
+
 const resetFilters = () => {
   searchParams.value = { name: '', typ: '' }; 
   loadEvents(); 

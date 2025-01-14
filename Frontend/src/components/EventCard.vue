@@ -84,7 +84,7 @@ export default {
 .event-details {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Zentriert die Inhalte horizontal */
+  align-items: center; 
   gap: 10px;
   margin-top: 15px;
 }
@@ -98,8 +98,8 @@ export default {
 .event-detail p,
 .event-detail i {
   color: white;
-  text-align: center; /* Text wird horizontal in der Mitte ausgerichtet */
-  margin: 0; /* Entfernt Abstände */
+  text-align: center; 
+  margin: 0; 
 }
 
 .event-detail .icon {

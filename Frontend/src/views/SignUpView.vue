@@ -16,13 +16,13 @@ async function register() {
   // Prüfen ob alle Felder ausgefüllt sind
   if (!email.value || !password.value || !fullName.value || !phoneNumber.value || !address.value) {
     errorMessage.value = "Alle Felder müssen ausgefüllt werden.";
-    return; // Funktion abbrechen, wenn ein Feld leer ist
+    return; 
   }
 
   // Telefonnummer darf nur Zahlen enthalten
   if (!/^[0-9]+$/.test(phoneNumber.value)) {
     errorMessage.value = "Die Telefonnummer darf nur Zahlen enthalten.";
-    return; // Funktion abbrechen, wenn Telefonnummer ungültig ist
+    return; 
   }
 
   // Passwortlänge prüfen
