@@ -30,6 +30,7 @@ const updateRating = async () => {
     emailAddress: userStore.user?.emailAddress,
     bewertung: userRating.value,
     bewertungEventOf: event.value?.id,
+    userId: userStore.user?.id
   };
 
   console.log('Gesendete Daten:', feedbackData);

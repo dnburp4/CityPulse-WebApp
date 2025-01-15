@@ -100,24 +100,48 @@ module.exports = {
     }
   },
 
-  // Feedbacks für ein Event abrufen
-  listByEvent: async function (req, res) {
+
+
+  // // Feedbacks für ein Event abrufen
+  // listByEvent: async function (req, res) {
+  //   try {
+  //     const { eventId } = req.params;
+
+  //     if (!eventId) {
+  //       return res.status(400).json({ error: 'Event-ID erforderlich.' });
+  //     }
+
+  //     const feedbacks = await Feedback.find({ feedbackEventOf: eventId });
+
+  //     return res.status(200).json({
+  //       message: 'Feedbacks erfolgreich abgerufen.',
+  //       data: feedbacks,
+  //     });
+  //   } catch (err) {
+  //     sails.log.error('Fehler beim Abrufen von Feedbacks:', err);
+  //     return res.status(500).json({ error: 'Interner Serverfehler.' });
+  //   }
+  // },
+
+
+  find: async function (req, res) {
     try {
-      const { eventId } = req.params;
-
-      if (!eventId) {
-        return res.status(400).json({ error: 'Event-ID erforderlich.' });
+      const userId = req.session.userId; 
+  
+      if (!userId) {
+        return res.forbidden({ message: 'Benutzer nicht eingeloggt' });
       }
+  
+      const feedback = await BewertungFeedback.find({ userId });
+      sails.log.debug('Feedback von dem Benutzer:', feedback);
+  
+      return res.json(feedback);
+    } catch (error) {
+      sails.log.error('Fehler beim Abrufen der Tickets:', error);
+      return res.serverError({ message: 'Fehler beim Abrufen der Tickets' });
+    }},
 
-      const feedbacks = await Feedback.find({ feedbackEventOf: eventId });
 
-      return res.status(200).json({
-        message: 'Feedbacks erfolgreich abgerufen.',
-        data: feedbacks,
-      });
-    } catch (err) {
-      sails.log.error('Fehler beim Abrufen von Feedbacks:', err);
-      return res.status(500).json({ error: 'Interner Serverfehler.' });
-    }
-  },
-};
+  };
+
+

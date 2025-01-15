@@ -49,7 +49,7 @@ module.exports.routes = {
   'DELETE /user/:id': { controller: 'UserController', action: 'destroy' },
 
 
-  'GET /feedback': {controller: 'BewertungFeedback', action: 'listByEvent'},
+  'GET /feedback': {controller: 'BewertungFeedback', action: 'find'},
   'POST /feedback': {controller: 'BewertungFeedback', action: 'create'},
   'PUT /feedback': {controller: 'BewertungFeedback', action: 'update'},
   'DELETE /feedback/:id': {controller: 'BewertungFeedback', action: 'destroy' },
@@ -61,7 +61,6 @@ module.exports.routes = {
 
 
   'POST /ticketkauf': { controller: 'TicketkaufController', action: 'create' },
-
   'GET /ticketkauf': { controller: 'TicketkaufController', action: 'find' },
 
 

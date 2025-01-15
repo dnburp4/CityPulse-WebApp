@@ -12,7 +12,12 @@ module.exports = {
 
      bewertungEventOf: {
         model: 'Event'
-      }
+      }, 
+
+      userId: {
+         model: 'user', 
+         required: true,
+       },
   
     }
   
