@@ -63,8 +63,6 @@ onMounted(loadEvent); // Lade die Eventdaten, wenn die Komponente gemountet wird
     <Header title="Event-Details" />
 
     <main class="event-container">
-      <h1>Event-Details</h1>
-
       <div v-if="!event">Lädt...</div>
 
       <div v-else>

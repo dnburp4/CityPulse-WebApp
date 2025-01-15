@@ -27,7 +27,7 @@ const editEvent = ref(null);
 //read
 const loadEvents = async () => {
   try {
-    const response = await axios.get('http://localhost:1337/event');
+    const response = await axios.get('/event');
     events.value = response.data;
   } catch (error) {
     console.error('Fehler beim Laden der Events:', error);
@@ -37,7 +37,7 @@ const loadEvents = async () => {
 //create
 const createEvent = async () => {
   try {
-    await axios.post('http://localhost:1337/event', newEvent.value);
+    await axios.post('/event', newEvent.value);
     alert('Event erfolgreich erstellt');
     loadEvents(); 
     newEvent.value = {
