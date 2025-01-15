@@ -5,24 +5,44 @@ import axios from 'axios';
 import Header from '@/components/Header.vue'; 
 import Footer from '@/components/Footer.vue'; 
 import EventCard from '@/components/EventCard.vue'; 
+import StarRating from '@/components/StarRating.vue';
+import { useUserStore } from '@/stores/user';
 
 const route = useRoute(); // Zugriff auf die Routenparameter
 const router = useRouter(); // Router für Navigation
 const event = ref(null); // Speichert das aktuelle Event
+const userStore = useUserStore(); // Speichert die Benutzerdaten
+const userRating = ref(0); // Bewertung des Benutzers
 
-// Lade das Event basierend auf der ID in der URL
+// Lade die Daten des Events basierend auf der ID
 const loadEvent = async () => {
   try {
-    const response = await axios.get(`http://localhost:1337/event/${route.params.id}`);
-    event.value = response.data; // Speichert das geladene Event
+    const response = await axios.get(`/event/${route.params.id}`);
+    event.value = response.data; // Speichere die Eventdaten
   } catch (error) {
     console.error('Fehler beim Laden des Events:', error);
   }
 };
 
-onMounted(loadEvent); // Lädt die Eventdaten wenn die Komponente gemountet wird
+// Sende die Bewertung an den Server
+const updateRating = async () => {
+  const feedbackData = {
+    emailAddress: userStore.user?.emailAddress,
+    bewertung: userRating.value,
+    bewertungEventOf: event.value?.id,
+  };
 
-// Funktion zur Navigation zur TicketKaufView
+  console.log('Gesendete Daten:', feedbackData);
+
+  try {
+    await axios.post('/feedback', feedbackData);
+    console.log('Feedback erfolgreich gesendet');
+  } catch (error) {
+    console.error('Fehler beim Senden des Feedbacks:', error);
+  }
+};
+
+// Navigation zur Ticketkauf-Ansicht
 const navigateToTicketKauf = () => {
   router.push({
     name: 'ticketkauf',
@@ -33,20 +53,19 @@ const navigateToTicketKauf = () => {
     },
   });
 };
+
+onMounted(loadEvent); // Lade die Eventdaten, wenn die Komponente gemountet wird
 </script>
 
 <template>
   <div class="event-detail-view">
-    
-    <Header title="Event Details" />
+    <Header title="Event-Details" />
 
     <main class="event-container">
-      <h1>Event Details</h1>
+      <h1>Event-Details</h1>
 
-      
-      <div v-if="!event">Loading...</div>
+      <div v-if="!event">Lädt...</div>
 
-      
       <div v-else>
         <EventCard
           :id="event.id"
@@ -57,19 +76,33 @@ const navigateToTicketKauf = () => {
           :bewertung="event.bewertung"
         />
 
-        
         <button class="ticket-button" @click="navigateToTicketKauf">
           Ticket kaufen
         </button>
+      
+        <p>Bewertung abgeben:</p>
+        <!-- Sternebewertungskomponente -->
+
+        <div class="stars-container">
+          <star-rating v-model="userRating" :max-stars="5" />
+        </div>
+        <button id="Feedback" class="send-feedback-button" @click="updateRating">
+          Feedback senden
+        </button>
+        
       </div>
     </main>
 
-    
     <Footer />
   </div>
 </template>
 
 <style scoped>
+
+
+#Feedback {
+  background-color: #390bb9;
+}
 .event-detail-view {
   background-color: #000000; 
   color: #ffffff; 
@@ -79,6 +112,12 @@ const navigateToTicketKauf = () => {
   justify-content: space-between;
 }
 
+
+.stars-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .event-container {
   padding: 20px;
   max-width: 800px;
@@ -86,12 +125,14 @@ const navigateToTicketKauf = () => {
   text-align: center;
 }
 
+
 .event-container h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
 
-.ticket-button {
+.ticket-button,
+.send-feedback-button {
   background-color: #57164a;
   color: white;
   border: none;
@@ -104,6 +145,7 @@ const navigateToTicketKauf = () => {
   margin-top: 20px;
 }
 
+#Feedback:hover,
 .ticket-button:hover {
   background-color: #7d2d6b;
 }

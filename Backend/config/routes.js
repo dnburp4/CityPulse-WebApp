@@ -49,6 +49,12 @@ module.exports.routes = {
   'DELETE /user/:id': { controller: 'UserController', action: 'destroy' },
 
 
+  'GET /feedback': {controller: 'BewertungFeedback', action: 'listByEvent'},
+  'POST /feedback': {controller: 'BewertungFeedback', action: 'create'},
+  'PUT /feedback': {controller: 'BewertungFeedback', action: 'update'},
+  'DELETE /feedback/:id': {controller: 'BewertungFeedback', action: 'destroy' },
+
+
 
 
   'GET /event/:id': { controller: 'EventController', action: 'findOne' },

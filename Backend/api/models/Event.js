@@ -10,7 +10,7 @@ module.exports = {
       datum: { type: 'string' },
       typ: { type: 'string' },
       preis: { type: 'number' },
-      bewertung: { type: 'number', defaultsTo: 0 },
+      bewertung: { type: 'number'},
       ort: { type: 'string' },
       video: { type: 'string' },
       
@@ -19,11 +19,12 @@ module.exports = {
       tickets: {
         collection: 'Ticket', 
         via: 'forEvent'
-      }
+      },
+
+      
+      
 
     },
-
-
 
 
 
