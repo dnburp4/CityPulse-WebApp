@@ -7,6 +7,7 @@ import UserCard from '@/components/UserCard.vue';
 
  const startEdit = (user) => {
   editUser.value = { ...user };
+  window.scrollTo(0, 0)
 };
 
 const users = ref([]);
@@ -72,7 +73,7 @@ const updateUser = async () => {
   try {
     await axios.put(`/user/${editUser.value.id}`, editUser.value);
     alert('User erfolgreich aktualisiert');
-    loadUser(); 
+    loadUsers(); 
     editUser.value = null; 
   } catch (error) {
     console.error('Fehler beim Aktualisieren des Users:', error);
@@ -92,6 +93,9 @@ const updateUser = async () => {
 
 <!-- Artikel von News erstellen -->
 <div class="forms-container">
+
+
+<section v-if="!editUser">
   <h2>Neuen Benutzer erstellen</h2>
   <form @submit.prevent="createUser">
     <input v-model="newUser.emailAddress" type="email" placeholder="Email" required />
@@ -108,7 +112,10 @@ const updateUser = async () => {
 
     <button type="submit">Erstellen</button>
   </form>
-</div>
+
+</section>
+
+
 
 
 <!-- Edit User -->
@@ -126,11 +133,12 @@ const updateUser = async () => {
       Super Admin
     </label>
 
-    <button type="submit">Speichern</button>
+    <button type="submit" >Speichern</button>
     <button type="button" @click="editUser = null">Abbrechen</button>
   </form>
 </section>
 
+</div> <!-- forms-container -->
 
 
     <main class="users-container">

@@ -4,6 +4,12 @@ import axios from 'axios';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 
+//Hilft die Daten aus dem geklickten Event zu nehmen und scrollt zu dem form 
+const startEdit = (event) => {
+  editEvent.value = { ...event };
+  window.scrollTo(0, 0)
+};
+
 const events = ref([]); 
 const newEvent = ref({
   id: '',
@@ -89,7 +95,7 @@ onMounted(loadEvents);
   <div class="crud-test-view">
   
     <!--create -->
-    <section>
+    <section v-if="!editEvent">
       <h2>Neues Event erstellen</h2>
       <form @submit.prevent="createEvent">
         <input v-model="newEvent.id" type="text" placeholder="id" required />
@@ -163,7 +169,7 @@ onMounted(loadEvents);
           <p>Typ: {{ event.typ }}</p>
           <p>Preis: {{ event.preis }}€</p>
           <p>Bewertung: {{ event.bewertung }} Sterne</p>
-          <button @click="editEvent = { ...event }">Bearbeiten</button>
+          <button @click="startEdit(event)">Bearbeiten</button>
           <button @click="deleteEvent(event.id)">Löschen</button>
         </li>
       </ul>

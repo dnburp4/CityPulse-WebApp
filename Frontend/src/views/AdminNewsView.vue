@@ -8,6 +8,7 @@ import axios from 'axios';
 
 const startEdit = (article) => {
   editArticle.value = { ...article };
+  window.scrollTo(0, 0)
 };
 
 
@@ -63,7 +64,16 @@ const updateArticle = async () => {
     await axios.put(`/news/${editArticle.value.id}`, editArticle.value);
     alert('Artikel erfolgreich aktualisiert');
     loadNews(); 
+
+
+
+
+
+
     editArticle.value = null; 
+
+
+
   } catch (error) {
     console.error('Fehler beim Aktualisieren des Artikels:', error);
   }
@@ -76,6 +86,10 @@ onMounted(loadNews);
   <Header title="Welcome Administrator!" />
 
   <div class="alle-news-view">
+
+
+
+    <section v-if="!editArticle">
     <!-- Artikel von News erstellen -->
     <div class="forms-container">
       <h2>Neuen Artikel erstellen</h2>
@@ -86,6 +100,7 @@ onMounted(loadNews);
         <button type="submit">Erstellen</button>
       </form>
     </div>
+  </section>
 
     <!-- Update -->
     <section v-if="editArticle">
@@ -102,8 +117,8 @@ onMounted(loadNews);
     <main class="news-container">
       <div class="news-list">
         <NewsCardAdmin
-          v-for="article in news"
-          :key="article.id"
+        v-for="article in news.slice().reverse()"
+        :key="article.id"
           :newsTitle="article.name"
           :newsContent="article.description"
           :bild="article.bild"

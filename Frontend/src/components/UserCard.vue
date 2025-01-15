@@ -10,7 +10,7 @@ defineProps({
     required: true
   }, 
   handynummer: {
-    type: String, 
+    type: Number, 
     required: false
   }, 
   adresse: {
