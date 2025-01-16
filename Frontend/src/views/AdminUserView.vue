@@ -87,7 +87,10 @@ const updateUser = async () => {
 
 
 <template>
-  <Header title="Welcome Administrator!" />
+  <Header title="User Verwaltung" />
+
+
+
 
 
 
@@ -110,7 +113,7 @@ const updateUser = async () => {
       Super Admin
     </label>
 
-    <button type="submit">Erstellen</button>
+    <button class="btn-post-user" type="submit">Erstellen</button>
   </form>
 
 </section>
@@ -133,8 +136,8 @@ const updateUser = async () => {
       Super Admin
     </label>
 
-    <button type="submit" >Speichern</button>
-    <button type="button" @click="editUser = null">Abbrechen</button>
+    <button class="btn-white" type="submit" >Speichern</button>
+    <button class="btn-red" type="button" @click="editUser = null">Abbrechen</button>
   </form>
 </section>
 
@@ -166,7 +169,7 @@ const updateUser = async () => {
 <style>
 
 
-.alle-news-view {
+.users-view {
   background-color: #000; 
   color: white; 
   min-height: 100vh; 
@@ -185,8 +188,127 @@ const updateUser = async () => {
 .user-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  gap: 10px;
 }
+
+
+.forms-container {
+  background-color: #f5f5f5; 
+  padding: 25px;
+  border-radius: 12px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  max-width: 300px; 
+  margin: 40px auto; 
+  text-align: center; 
+}
+
+.forms-container h2{
+  color: #000000;
+}
+
+.forms-container input,
+.forms-container textarea {
+  width: 90%; 
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd; 
+  font-size: 1rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05); 
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+
+.forms-container input:focus {
+  border-color: #4caf50; 
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.4); 
+  outline: none; 
+}
+
+/* Container für das Label und die Checkbox zentrieren */
+.forms-container label {
+  display: flex;
+  align-items: center; /* Vertikal zentrieren */
+  justify-content: center; /* Horizontal zentrieren */
+  margin: 15px; /* Mehr Abstand zum restlichen Inhalt */
+  cursor: pointer; /* Mache das Label klickbar */
+  text-align: center; /* Text innerhalb des Labels zentrieren */
+}
+
+/* Checkbox Styling */
+.forms-container label input {
+  width: 20px; /* Größere Checkbox */
+  height: 20px;
+  margin: 10px; /* Abstand zwischen der Checkbox und dem Text */
+  cursor: pointer; /* Mache die Checkbox klickbar */
+  transition: background-color 0.3s ease;
+}
+
+/* Hover-Effekt auf die Checkbox */
+.forms-container label:hover input {
+  background-color: #4caf50;
+}
+
+
+
+.btn-white {
+  background-color: #ffffff; 
+  color: #000000; 
+  border: none; 
+  font-weight: bold;
+  padding: 12px 30px; 
+  border-radius: 50px; 
+  font-size: 1.2rem; 
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  font-family: "Rubik", sans-serif;
+  margin: 10px;
+  cursor: pointer;
+
+}
+
+.btn-red {
+  background-color: #c43f3f;
+  color: #000000;
+  border: none;
+  font-weight: bold;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-family: "Rubik", sans-serif;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.btn-red:hover {
+  background-color: #732d91;
+}
+
+.btn-white:hover {
+  background-color: #732d91; 
+}
+
+
+.btn-post-user {
+  background-color: #8BC34A;
+  color: #000000;
+  border: none;
+  font-weight: bold;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-family: "Rubik", sans-serif;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+  cursor: pointer;
+}
+
+
+.btn-post-user:hover {
+  background-color: #732d91; 
+}
+
 
 
 </style>

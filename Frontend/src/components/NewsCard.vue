@@ -35,8 +35,8 @@ defineProps({
 
 <style scoped>
 .news-card {
-  background-color: #FF1969;
-  border-radius: 50px;
+  background-color: #3c8178;
+  border-radius: 15px;
   text-align: center;
   overflow: hidden;
 }
@@ -52,16 +52,12 @@ defineProps({
 .news-card-text {
   padding: 30px;
   font-family: 'Rubik', sans-serif;
-  
-}
-
-.news-card-text h2 {
+  text-align: left; /* Text linksbündig */
+  line-height: 1.4; /* Zeilenhöhe für besseren Lesefluss */
   color: white;
-  text-decoration: none;
 }
 
-.news-card-text h2:hover {
-  text-decoration: underline;
-  color: #ffd700;
-}
+
+
+
 </style>

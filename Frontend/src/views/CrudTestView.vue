@@ -88,9 +88,8 @@ onMounted(loadEvents);
 
 
 <template>
-<Header title="CRUD" />
+<Header title="Events bearbeiten" />
 
-<h1>CRUD Test View</h1>
 
   <div class="crud-test-view">
   

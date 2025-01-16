@@ -3,7 +3,7 @@
     <div class="header-container">
      
       <button @click="goBack" class="back-button">
-        <img src="@/assets/back-icon.svg" alt="Zurück" />
+        <img src="@/assets/arrow_back_.svg" alt="Zurück" />
       </button>
 
       
@@ -11,7 +11,7 @@
 
      
       <button @click="goHome" class="home-button">
-        <img src="@/assets/home-icon.svg" alt="Startseite" />
+        <img src="@/assets/home.svg" alt="Startseite" />
       </button>
     </div>
   </header>

@@ -83,36 +83,39 @@ onMounted(loadNews);
 </script>
 
 <template>
-  <Header title="Welcome Administrator!" />
+  <Header title="News bearbeiten" />
 
   <div class="alle-news-view">
 
 
 
-    <section v-if="!editArticle">
-    <!-- Artikel von News erstellen -->
-    <div class="forms-container">
-      <h2>Neuen Artikel erstellen</h2>
+        <!-- Artikel von News erstellen -->
+    <div class="forms-container" v-if="!editArticle">
+      <h2>Neuen Artikel schreiben</h2>
       <form @submit.prevent="createArticle">
         <input v-model="newArticle.name" type="text" placeholder="Name" required />
-        <input v-model="newArticle.description" type="text" placeholder="Beschreibung" required />
+        <textarea v-model="newArticle.description" placeholder="Beschreibung" id="big-content"rows="5" required></textarea>
         <input v-model="newArticle.bild" type="text" placeholder="Bild URL" />
-        <button type="submit">Erstellen</button>
+        <button class="btn-post-art" type="submit">Erstellen</button>
       </form>
+
     </div>
-  </section>
+
+
 
     <!-- Update -->
-    <section v-if="editArticle">
+    <div class="forms-container" v-if="editArticle">
       <h2>Artikel bearbeiten</h2>
       <form @submit.prevent="updateArticle">
         <input v-model="editArticle.name" type="text" placeholder="Titel des Artikels" required />
-        <input v-model="editArticle.description" type="text" placeholder="Inhalt" required />
+        <textarea v-model="editArticle.description" placeholder="Beschreibung" id="big-content"rows="5" required></textarea>
         <input v-model="editArticle.bild" type="text" placeholder="Bild-URL" />
-        <button type="submit">Speichern</button>
-        <button type="button" @click="editArticle = null">Abbrechen</button>
+
+        <button class="btn-white" type="submit">Speichern</button>
+        <button class="btn-red" type="button" @click="editArticle = null">Abbrechen</button>
       </form>
-    </section>
+    </div>
+
 
     <main class="news-container">
       <div class="news-list">
@@ -132,10 +135,11 @@ onMounted(loadNews);
   <Footer />
 </template>
 
-<style scoped>
+<style>
+
+
 .alle-news-view {
-  background-color: #000; 
-  color: white; 
+  background-color: rgb(255, 255, 255); 
   min-height: 100vh; 
   display: flex;
   flex-direction: column;
@@ -144,9 +148,10 @@ onMounted(loadNews);
 
 .news-container {
   display: flex;
-  justify-content: center; 
-  align-items: flex-start; 
+  justify-content: center;
+  align-items: flex-start;
   padding: 20px;
+  flex-wrap: wrap; /* Für responsive Anzeige */
 }
 
 .news-list {
@@ -156,8 +161,102 @@ onMounted(loadNews);
 }
 
 .forms-container {
-  display: block;
-  justify-content: center;
-  padding: 20px;
+  background-color: #f5f5f5; 
+  padding: 25px;
+  border-radius: 12px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  max-width: 300px; 
+  margin: 40px auto; 
+  text-align: center; 
 }
+
+.forms-container h2{
+  color: #000000;
+
+
+}
+
+.forms-container input,
+.forms-container textarea {
+  width: 85%; 
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd; 
+  font-size: 1rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05); 
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.forms-container input:focus,
+.forms-container textarea:focus {
+  border-color: #4caf50; 
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.4); 
+  outline: none; 
+}
+
+#big-content {
+  height: 200px; 
+  resize: none; 
+}
+
+.btn-white {
+  background-color: #ffffff; 
+  color: #000000; 
+  border: none; 
+  font-weight: bold;
+  padding: 12px 30px; 
+  border-radius: 50px; 
+  font-size: 1.2rem; 
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  font-family: "Rubik", sans-serif;
+  margin: 10px;
+  cursor: pointer;
+
+}
+
+.btn-red {
+  background-color: #c43f3f;
+  color: #000000;
+  border: none;
+  font-weight: bold;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-family: "Rubik", sans-serif;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.btn-red:hover {
+  background-color: #732d91;
+}
+
+.btn-white:hover {
+  background-color: #732d91; 
+}
+
+
+.btn-post-art {
+  background-color: #8BC34A;
+  color: #000000;
+  border: none;
+  font-weight: bold;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-family: "Rubik", sans-serif;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+  cursor: pointer;
+}
+
+
+.btn-post-art:hover {
+  background-color: #732d91; 
+}
+
+
 </style>

@@ -33,7 +33,7 @@ onMounted(async () => {
   <main class="news-container">
     <div class="news-list">
       <NewsCard
-        v-for="article in news"
+        v-for="article in news.slice().reverse()"
         :key="article"
         :newsTitle="article.name"
         :newsContent="article.description"
@@ -71,7 +71,34 @@ onMounted(async () => {
 
 .news-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: 1fr;
   gap: 20px;
 }
+
+
+.news-list {
+  display: grid;
+  grid-template-columns: 1fr; /* Auf kleinen Bildschirmen immer eine Karte pro Reihe */
+  gap: 20px; /* Abstand zwischen den Karten */
+}
+
+
+@media (max-width: 768px) {
+  .news-list {
+    grid-template-columns: 1fr; /* 1 Spalte für Handy */
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .news-list {
+    grid-template-columns: repeat(2, 1fr); /* Zwei Spalten Tablets */
+  }
+}
+
+@media (min-width: 992px) {
+  .news-list {
+    grid-template-columns: repeat(3, 1fr); /* Drei Spalten im Desktop */
+  }
+}
+
 </style>

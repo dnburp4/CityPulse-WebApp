@@ -44,12 +44,15 @@ defineProps({
 
       <p class="user-name">Name: {{ nameUser }}</p>
       <p class="user-email">Email: {{ emailUser }}</p>
-      <p class="user-email">Handy-Nummer: {{ handynummer }}</p>
+      <p class="user-email">Handy-Nummer: {{ handynummer || "Nicht verfügbar"}}</p>
       <p class="user-email">Adresse: {{ adresse || "Nicht verfügbar" }}</p>
-      <p>{{ isSuperAdmin? "Admin" : "User" }}</p>
+      <p>Rolle: {{ isSuperAdmin? "Admin" : "User" }}</p>
 
-    <button @click="functionDelete">Löschen</button>
-    <button @click="functionEdit">Bearbeiten</button>
+
+    <div class="button-container-user"><!-- Button Container -->       
+    <button class="btn-user-edit" @click="functionEdit">Bearbeiten</button>
+    <button class="btn-user-delete" @click="functionDelete">Löschen</button>
+    </div><!-- Button Container -->
 
     </div>
 
@@ -57,20 +60,25 @@ defineProps({
 
 <style scoped>
 
+.button-container-user {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+}
+
 .info-box-user {
   background-color: #6c3483;
   color: rgb(255, 255, 255);
   padding: 50px 10px 100px;
   border-radius: 12px;
   font-size: 18px;
-  width: 100%;
-  max-width: 500px;
+  width: 90%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   font-family: "Rubik", sans-serif;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 40px; 
   position: relative;
+  margin: 10px;
 }
 
 .info-box p {
@@ -93,9 +101,10 @@ defineProps({
   text-decoration: none;
   position: relative;
   position: relative;
-  top: 30px; 
   font-family: "Rubik", sans-serif;
   transition: background-color 0.3s ease;
+  cursor: pointer;
+
 }
 
 .btn-user-delete {
@@ -107,15 +116,20 @@ defineProps({
   border-radius: 50px;
   font-size: 1.2rem;
   font-family: "Rubik", sans-serif;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px;
   transition: background-color 0.3s ease;
+  cursor: pointer;
+
 }
 
 
-.btn-user-edit
-.btn-user-delete {
+
+.btn-user-delete:hover {
   background-color: #732d91; 
 }
+.btn-user-edit:hover {
+  background-color: #732d91; 
+}
+  
 
 </style>
