@@ -1,45 +1,39 @@
-const BewertungFeedback = require("../models/BewertungFeedback");
 
 module.exports = {
   create: async function (req, res) {
-    // Recibir parámetros del cuerpo de la solicitud
+
+    sails.log.debug("Feedback speichern ")
+
     let params = req.allParams();
 
-    // Crear el feedback
     await BewertungFeedback.create(params);
 
+    sails.log.debug("Abgespeichert")
 
-        // Obtener todos los feedbacks relacionados al evento
-        const allFeedbacks = await BewertungFeedback.find({
-          feedbackEventOf: params.feedbackEventOf,
-        });
+        // const allFeedbacks = await BewertungFeedback.find({
+        //   feedbackEventOf: params.feedbackEventOf,
+        // });
     
-        // Calcular el promedio de las calificaciones
-        const totalBewertungen = allFeedbacks.length;
-        const sumBewertungen = allFeedbacks.reduce((sum, feedback) => sum + feedback.bewertung, 0);
-        const avgBewertung = totalBewertungen > 0 ? sumBewertungen / totalBewertungen : 0;
+        // const totalBewertungen = allFeedbacks.length;
+        // const sumBewertungen = allFeedbacks.reduce((sum, feedback) => sum + feedback.bewertung, 0);
+        // const avgBewertung = totalBewertungen > 0 ? sumBewertungen / totalBewertungen : 0;
     
-        // Actualizar la puntuación promedio del evento
-        await Event.updateOne({ id: params.feedbackEventOf }).set({ bewertung: avgBewertung });
+        // await Event.updateOne({ id: params.feedbackEventOf }).set({ bewertung: avgBewertung });
 
+    sails.log.debug("id "+ params.bewertungEventOf)
 
+    let AVERAGE_BEWERTUNG = `
+      SELECT AVG(bewertung) as avgBewertung
+      FROM bewertungfeedback
+      WHERE bewertungEventOf = $1`;
 
-       
+    let rawResult = await sails.sendNativeQuery(AVERAGE_BEWERTUNG, [params.bewertungEventOf]);
+    sails.log.debug(rawResult);
 
-    // // Calcular la media de la puntuación para el evento
-    // let AVERAGE_BEWERTUNG = `
-    //   SELECT AVG(bewertung) as avgBewertung
-    //   FROM citypulse_prod.bewertungfeedback
-    //   WHERE bewertungEventOf = $1`;
+    let avgBewertung = rawResult.rows[0].avgBewertung;
+    sails.log.debug("Neuer Durschnitt: " + avgBewertung);
 
-    // let rawResult = await sails.sendNativeQuery(AVERAGE_BEWERTUNG, [params.feedbackEventOf]);
-    // sails.log.debug(rawResult);
-
-    // let avgBewertung = rawResult.rows[0].avgBewertung;
-    // sails.log.debug(avgBewertung);
-
-    // // Actualizar la puntuación promedio del evento
-    // await Event.updateOne({ id: params.feedbackEventOf }).set({ bewertung: avgBewertung });
+    await Event.updateOne({ id: params.bewertungEventOf }).set({ bewertung: avgBewertung });
 
     return res.ok();
 
