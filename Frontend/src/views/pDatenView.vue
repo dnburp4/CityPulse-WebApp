@@ -9,6 +9,7 @@ import { useUserStore } from '../stores/user';
 const userStore = useUserStore();
 const route = useRoute();
 const router = useRouter();
+const errorMessage = ref('')
 
 const fullName = ref('');
 const address = ref('');
@@ -32,8 +33,16 @@ onMounted(async () => {
 });
 
 const proceedToPayment = () => {
-  if (!fullName.value || !address.value || !houseNumber.value) {
-    alert('Bitte füllen Sie alle Felder aus, bevor Sie fortfahren.');
+  if (!fullName.value) {
+    errorMessage.value = 'Bitte geben Sie Ihren vollständigen Namen ein.';
+    return;
+  }
+  if (!address.value) {
+    errorMessage.value = 'Bitte geben Sie Ihre Adresse ein.';
+    return;
+  }
+  if (!houseNumber.value) {
+    errorMessage.value = 'Bitte geben Sie Ihre Hausnummer ein.';
     return;
   }
 
@@ -49,13 +58,12 @@ const proceedToPayment = () => {
       ticketCount: route.query.ticketCount,
       paymentMethod: route.query.paymentMethod,
       totalPrice: route.query.totalPrice,
-      fullName: fullName.value,
-      address: address.value,
-      houseNumber: houseNumber.value,
+      fullName: sanitizedFullName,
+      address: sanitizedAddress,
+      houseNumber: sanitizedHouseNumber,
     },
   });
 };
-
 </script>
 
 <template>
@@ -64,6 +72,9 @@ const proceedToPayment = () => {
 
     <main class="personal-data-container">
       <h1>Persönliche Daten</h1>
+
+      <!-- Fehlermeldung -->
+      <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
 
       <div class="form-group">
         <label for="full-name">Vor- und Nachname</label>

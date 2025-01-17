@@ -12,6 +12,7 @@ const events = ref([]);
 const selectedEvent = ref(null); 
 const ticketCount = ref(1); 
 const paymentMethod = ref(''); 
+const errorMessage = ref(""); // Variable für Fehlermeldungen
 
 const price = computed(() => {
   if (selectedEvent.value) {
@@ -32,20 +33,25 @@ const loadEvents = async () => {
 onMounted(loadEvents);
 
 const proceedToNext = () => {
-  if (selectedEvent.value && paymentMethod.value) {
-    router.push({
-      name: 'pDaten',
-      query: {
-        eventId: selectedEvent.value.id, // Event-ID
-        eventName: selectedEvent.value.name, // Event-Name
-        ticketCount: ticketCount.value,
-        paymentMethod: paymentMethod.value,
-        totalPrice: price.value,
-      },
-    });
-  } else {
-    alert('Bitte wählen Sie ein Event und eine Zahlungsmethode aus.');
+  if (!selectedEvent.value) {
+    errorMessage.value = "Bitte wählen Sie ein Event aus.";
+    return;
   }
+  if (!paymentMethod.value) {
+    errorMessage.value = "Bitte wählen Sie eine Zahlungsmethode aus.";
+    return;
+  }
+
+  router.push({
+    name: 'pDaten',
+    query: {
+      eventId: selectedEvent.value.id, // Event-ID
+      eventName: selectedEvent.value.name, // Event-Name
+      ticketCount: ticketCount.value,
+      paymentMethod: paymentMethod.value,
+      totalPrice: price.value,
+    },
+  });
 };
 
 
@@ -60,6 +66,8 @@ const proceedToNext = () => {
     <main class="ticket-container">
       <h1>Tickets kaufen</h1>
       <p>Wählen Sie Bitte Ihr Event und die Anzahl der Tickets aus.</p>
+
+      <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
 
       <div class="form-group">
         <label for="event">Event</label>

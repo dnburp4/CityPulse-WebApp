@@ -1,26 +1,26 @@
 <template>
   <footer class="footer">
-    <div class="footer-links">
-      <RouterLink to="/AGB">AGB</RouterLink>
-      <RouterLink to="/Impressum">Impressum</RouterLink>
-      <RouterLink to="/Datenschutz">Datenschutz</RouterLink>
-
-
-    </div>
     <div class="social-media">
       <a href="https://www.facebook.com" target="_blank">
         <img src="@/assets/facebook.svg" alt="Facebook" />
       </a>
-      <a href="https://www.twitter.com" target="_blank">
+      <a href="https://www.twitter.com" target="_blank" class="twitter-link">
         <img src="@/assets/twitter-x.svg" alt="Twitter" />
       </a>
       <a href="https://www.instagram.com" target="_blank">
         <img src="@/assets/instagram.svg" alt="Instagram" />
       </a>
     </div>
-
+    <div class="footer-links">
+      <RouterLink to="/AGB">AGB |</RouterLink>
+      <RouterLink to="/Impressum" class="center">Impressum |</RouterLink>
+      <RouterLink to="/Datenschutz">Datenschutz</RouterLink>
+    </div>
     <div class="copyright">
       &copy; 2025 CityPulse
+    </div>
+    <div class="project-notice">
+      Dieses Projekt wurde im Rahmen eines Hochschulprojekts erstellt und dient ausschließlich zu Lernzwecken.
     </div>
   </footer>
 </template>
@@ -35,15 +35,23 @@
 
 .footer-links {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
+  gap: 10px;
+  margin-top: 10px;
+  margin-left: 10px; 
+  
+}
+
+.footer-links .center {
+  text-align: center;
+
+ 
 }
 
 .footer-links a {
   color: #fff;
   text-decoration: none;
-  margin: 5px 0;
   font-size: 1rem;
 }
 
@@ -55,6 +63,8 @@
   display: flex;
   justify-content: center;
   gap: 15px;
+  margin-bottom: 10px;
+  
 }
 
 .social-media img {
@@ -63,9 +73,14 @@
 }
 
 .copyright {
-
   font-size: 0.9rem;
   color: #ffffff;
   padding-top: 15px; 
+}
+
+.project-notice {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: #cccccc;
 }
 </style>
