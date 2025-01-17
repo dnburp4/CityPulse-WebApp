@@ -61,7 +61,20 @@ import Footer from '@/components/Footer.vue';
         <h2>Datensicherheit</h2>
         <p>Wir verwenden technische und organisatorische Sicherheitsmaßnahmen, um Ihre Daten gegen Manipulation, Verlust oder unbefugten Zugriff zu schützen.</p>
       </section>
+
+      <section>
+        <h2>Cookies</h2>
+        <p>Unsere Webseite verwendet nur technisch notwendige Cookies</p>
+      </section>
+
+
     </div>
+
+
+
+
+
+
 
     <Footer />
   </div>

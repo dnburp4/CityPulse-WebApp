@@ -12,6 +12,7 @@ const events = ref([]);
 const selectedEvent = ref(null); 
 const ticketCount = ref(1); 
 const paymentMethod = ref(''); 
+
 const price = computed(() => {
   if (selectedEvent.value) {
     return selectedEvent.value.preis * ticketCount.value;

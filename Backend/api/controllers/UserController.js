@@ -90,4 +90,19 @@ module.exports = {
     },
 
 
+  
+    countUsers: async function (req, res) {
+      try {
+        const count = await User.count(); // Anzahl der Benutzer zählen
+        return res.json({ count }); // Anzahl als JSON zurückgeben
+      } catch (error) {
+        sails.log.error('Fehler im countUsers:', error);
+        return res.serverError(error); // Fehler zurückgeben
+      }
+    },
+    
+    
+    
+    
+
   };

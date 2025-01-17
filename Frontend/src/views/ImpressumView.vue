@@ -13,7 +13,7 @@ import Footer from '@/components/Footer.vue';
       <h1>Impressum</h1>
 
       <section>
-        <h2>Angaben gemäß § 5 TMG</h2>
+        <h2>CityPulse</h2>
         <p>Unternehmen XYZ<br />
           Musterstraße 1<br />
           12345 Musterstadt</p>

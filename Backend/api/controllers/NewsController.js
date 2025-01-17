@@ -33,5 +33,18 @@ module.exports = {
   
       res.ok();
     },
+
+
+    
+      countNews: async function (req, res) {
+        try {
+          const count = await News.count(); // Anzahl der News zählen
+          return res.json({ count }); // Anzahl als JSON zurückgeben
+        } catch (error) {
+          return res.serverError(error); // Fehlerbehandlung
+        }
+      },
+    
+    
   
   };

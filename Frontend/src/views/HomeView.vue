@@ -6,6 +6,9 @@ import Footer from '@/components/Footer.vue';
 import HeaderStartseite from '@/components/HeaderStartseite.vue';
 import { useUserStore } from "../stores/user";
 
+
+
+
 const userStore = useUserStore();
 
 
@@ -49,6 +52,8 @@ onMounted(async () => {
     console.log('Is the user logged in: ', isUserLoggedIn)
 
 
+    
+
 </script>
 
 <template>
@@ -78,12 +83,19 @@ onMounted(async () => {
 </div> 
 
 
+  
+
+
   </main>
 
   <Footer/>
 </template>
 
 <style>
+
+
+
+
 
 .admin-container {
     flex-direction: column;

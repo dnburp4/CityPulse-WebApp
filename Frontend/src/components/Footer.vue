@@ -18,6 +18,10 @@
         <img src="@/assets/instagram.svg" alt="Instagram" />
       </a>
     </div>
+
+    <div class="copyright">
+      &copy; 2025 CityPulse
+    </div>
   </footer>
 </template>
 
@@ -56,5 +60,12 @@
 .social-media img {
   width: 24px;
   height: 24px;
+}
+
+.copyright {
+
+  font-size: 0.9rem;
+  color: #ffffff;
+  padding-top: 15px; 
 }
 </style>

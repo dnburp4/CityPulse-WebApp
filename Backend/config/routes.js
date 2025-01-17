@@ -54,6 +54,11 @@ module.exports.routes = {
   'PUT /feedback': {controller: 'BewertungFeedbackController', action: 'update'},
   'DELETE /feedback/:id': {controller: 'BewertungFeedbackController', action: 'destroy' },
 
+  'GET /api/users/count': 'UserController.countUsers',
+
+  'GET /api/events/count': 'EventController.countEvents',
+
+  'GET /api/news/count': 'NewsController.countNews',
 
 
 

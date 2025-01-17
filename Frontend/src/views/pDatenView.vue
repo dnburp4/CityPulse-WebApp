@@ -1,10 +1,12 @@
 <script setup>
-import { ref } from 'vue';
+
+import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
+import { useUserStore } from '../stores/user';
 
-
+const userStore = useUserStore();
 const route = useRoute();
 const router = useRouter();
 
@@ -17,6 +19,17 @@ const sanitizeInput = (value) => {
   div.textContent = value;
   return div.innerHTML;
 };
+
+
+onMounted(async () => {
+  // Benutzerdaten laden, falls sie nicht vorhanden sind
+  if (!userStore.user) {
+    await userStore.loadUserData();
+  }
+  // Benutzername vorbefüllen, falls verfügbar
+  fullName.value = userStore.user?.fullName || '';
+  address.value = userStore.user?.address || ''; // Adresse automatisch setzen
+});
 
 const proceedToPayment = () => {
   if (!fullName.value || !address.value || !houseNumber.value) {

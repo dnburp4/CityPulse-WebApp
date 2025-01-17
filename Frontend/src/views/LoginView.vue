@@ -42,7 +42,7 @@ async function login() {
 
         
         <div class="input-container">
-          <label for="email">Nutzername:</label>
+          <label for="email">Email-Adresse:</label>
           <input id="email" type="email" v-model="email" placeholder="E-Mail eingeben" required />
         </div>
 

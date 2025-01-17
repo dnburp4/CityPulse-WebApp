@@ -1,5 +1,6 @@
 <script setup>
 import { useRoute } from 'vue-router'; // Zugriff auf die aktuelle Route
+import CookieBanner from "@/components/CookieBanner.vue";
 
 // import HeaderStartseite from '@/components/HeaderStartseite.vue';
 //import Header from '@/components/Header.vue';
@@ -22,6 +23,9 @@ const route = useRoute(); // Aktuelle Route holen
     <!-- Footer nur auf anderen Seiten -->
     <!-- <Footer v-if="route.name !== 'home'" /> -->
   </div>
+
+  <CookieBanner />
+
 </template>
 
 <style scoped>

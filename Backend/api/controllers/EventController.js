@@ -141,7 +141,14 @@ module.exports = {
       }
     },
     
-    
+    countEvents: async function (req, res) {
+      try {
+        const count = await Event.count(); // Anzahl der Events zählen
+        return res.json({ count }); // Als JSON zurückgeben
+      } catch (error) {
+        return res.serverError(error); // Fehlerbehandlung
+      }
+    },
     
     
   
