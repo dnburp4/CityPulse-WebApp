@@ -52,8 +52,8 @@ defineProps({
 .news-card-text {
   padding: 30px;
   font-family: 'Rubik', sans-serif;
-  text-align: left; /* Text linksbündig */
-  line-height: 1.4; /* Zeilenhöhe für besseren Lesefluss */
+  text-align: left; 
+  line-height: 1.4; 
   color: white;
 }
 

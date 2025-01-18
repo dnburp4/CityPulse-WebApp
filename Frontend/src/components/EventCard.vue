@@ -18,6 +18,11 @@
           <img src="@/assets/location.svg" alt="location" class="icon" />
           <i>Ort: {{ ort }}</i>
         </div>
+        <div class="event-detail">
+      
+        <p>Preis: {{ preis }} €</p>
+</div>
+
       </div>
     </div>
 
@@ -42,6 +47,10 @@ export default {
     datum: String,
     ort: String,
     bewertung: Number,
+    preis: Number,
+  },
+  mounted() {
+    console.log("Preis:", this.preis); // Debugging: Zeigt den übergebenen Preis in der Konsole an
   },
 };
 </script>

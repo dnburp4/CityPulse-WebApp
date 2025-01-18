@@ -10,16 +10,6 @@ module.exports = {
 
     sails.log.debug("Abgespeichert")
 
-        // const allFeedbacks = await BewertungFeedback.find({
-        //   feedbackEventOf: params.feedbackEventOf,
-        // });
-    
-        // const totalBewertungen = allFeedbacks.length;
-        // const sumBewertungen = allFeedbacks.reduce((sum, feedback) => sum + feedback.bewertung, 0);
-        // const avgBewertung = totalBewertungen > 0 ? sumBewertungen / totalBewertungen : 0;
-    
-        // await Event.updateOne({ id: params.feedbackEventOf }).set({ bewertung: avgBewertung });
-
     sails.log.debug("id "+ params.bewertungEventOf)
 
     let AVERAGE_BEWERTUNG = `
@@ -94,28 +84,6 @@ module.exports = {
     }
   },
 
-
-
-  // // Feedbacks für ein Event abrufen
-  // listByEvent: async function (req, res) {
-  //   try {
-  //     const { eventId } = req.params;
-
-  //     if (!eventId) {
-  //       return res.status(400).json({ error: 'Event-ID erforderlich.' });
-  //     }
-
-  //     const feedbacks = await Feedback.find({ feedbackEventOf: eventId });
-
-  //     return res.status(200).json({
-  //       message: 'Feedbacks erfolgreich abgerufen.',
-  //       data: feedbacks,
-  //     });
-  //   } catch (err) {
-  //     sails.log.error('Fehler beim Abrufen von Feedbacks:', err);
-  //     return res.status(500).json({ error: 'Interner Serverfehler.' });
-  //   }
-  // },
 
 
   find: async function (req, res) {

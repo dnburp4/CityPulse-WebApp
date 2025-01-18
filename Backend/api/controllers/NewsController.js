@@ -35,7 +35,7 @@ module.exports = {
     },
 
 
-    
+      //count
       countNews: async function (req, res) {
         try {
           const count = await News.count(); // Anzahl der News zählen

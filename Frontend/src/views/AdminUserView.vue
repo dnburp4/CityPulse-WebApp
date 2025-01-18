@@ -225,26 +225,26 @@ const updateUser = async () => {
   outline: none; 
 }
 
-/* Container für das Label und die Checkbox zentrieren */
+
 .forms-container label {
   display: flex;
-  align-items: center; /* Vertikal zentrieren */
-  justify-content: center; /* Horizontal zentrieren */
-  margin: 15px; /* Mehr Abstand zum restlichen Inhalt */
-  cursor: pointer; /* Mache das Label klickbar */
-  text-align: center; /* Text innerhalb des Labels zentrieren */
+  align-items: center; 
+  justify-content: center; 
+  margin: 15px; 
+  cursor: pointer; 
+  text-align: center; 
 }
 
-/* Checkbox Styling */
+
 .forms-container label input {
-  width: 20px; /* Größere Checkbox */
+  width: 20px; 
   height: 20px;
-  margin: 10px; /* Abstand zwischen der Checkbox und dem Text */
-  cursor: pointer; /* Mache die Checkbox klickbar */
+  margin: 10px; 
+  cursor: pointer; 
   transition: background-color 0.3s ease;
 }
 
-/* Hover-Effekt auf die Checkbox */
+
 .forms-container label:hover input {
   background-color: #4caf50;
 }

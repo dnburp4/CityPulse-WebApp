@@ -73,6 +73,7 @@ onMounted(loadEvent); // Lade die Eventdaten, wenn die Komponente gemountet wird
           :datum="event.datum"
           :ort="event.ort"
           :bewertung="event.bewertung"
+          :preis="event.preis"
         />
 
         <button class="ticket-button" @click="navigateToTicketKauf">

@@ -95,7 +95,7 @@ module.exports = {
     
 
 
-
+      //filter
     filter: async function (req, res) {
       sails.log.debug("...");
   
@@ -141,6 +141,7 @@ module.exports = {
       }
     },
     
+    //count
     countEvents: async function (req, res) {
       try {
         const count = await Event.count(); // Anzahl der Events zählen

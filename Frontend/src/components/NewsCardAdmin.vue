@@ -63,8 +63,8 @@
   padding: 30px;
   font-family: 'Rubik', sans-serif;
   color: white;
-  text-align: left; /* Text linksbündig */
-  line-height: 1.4; /* Zeilenhöhe für besseren Lesefluss */
+  text-align: left; 
+  line-height: 1.4; 
 }
   
   .news-card-text h2 {

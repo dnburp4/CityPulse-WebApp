@@ -78,8 +78,8 @@ onMounted(async () => {
 
 .news-list {
   display: grid;
-  grid-template-columns: 1fr; /* Auf kleinen Bildschirmen immer eine Karte pro Reihe */
-  gap: 20px; /* Abstand zwischen den Karten */
+  grid-template-columns: 1fr; 
+  gap: 20px; 
 }
 
 

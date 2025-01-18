@@ -6,9 +6,6 @@ import Footer from '@/components/Footer.vue';
 import HeaderStartseite from '@/components/HeaderStartseite.vue';
 import { useUserStore } from "../stores/user";
 
-
-
-
 const userStore = useUserStore();
 
 
@@ -28,21 +25,7 @@ onMounted(async () => {
   }
 });
 
-//Man braucht eigentlich keine besondere onMounted Funktion, um die User Information in die Kosole auszugeben. 
-// onMounted(async () => {
-//   try {
-//     await userStore.loadUserData(); // Benutzerdaten laden
-//     console.log('Aktueller Benutzer:', userStore.user);
-//     console.log('Benutzername:', userStore.user?.fullName);
-//     console.log('E-Mail-Adresse:', userStore.user?.emailAddress);
-//     console.log('isAdmin:', userStore.user?.isSuperAdmin)
-//     console.log('method:', userStore.getIsSuperAdmin)
 
-//     isSuperAdmin.value = userStore.user?.isSuperAdmin || false; 
-//   } catch (error) {
-//     console.error('Fehler beim Laden der Benutzerdaten:', error);
-//   }
-// });
     console.log('Aktueller Benutzer:', userStore.user);
     console.log('Fullname:', userStore.user?.fullName);
     console.log('E-Mail-Adresse:', userStore.user?.emailAddress);
@@ -74,6 +57,7 @@ onMounted(async () => {
         :datum="event.datum"
         :ort="event.ort"
         :bewertung="event.bewertung"
+        :preis="event.preis"
       />
     </div>
 

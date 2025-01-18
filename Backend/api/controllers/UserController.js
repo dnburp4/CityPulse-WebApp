@@ -65,17 +65,7 @@ module.exports = {
       }
     },
   
-    // async destroy(req, res) {
-    //   try {
-    //     const deletedUser = await User.destroyOne({ id: req.params.id });
-    //     if (!deletedUser) {
-    //       return res.notFound();
-    //     }
-    //     return res.json(deletedUser);
-    //   } catch (error) {
-    //     return res.serverError(error);
-    //   }
-    // },
+  
 
 
     destroy: async function (req, res) {
@@ -90,7 +80,7 @@ module.exports = {
     },
 
 
-  
+    //count
     countUsers: async function (req, res) {
       try {
         const count = await User.count(); // Anzahl der Benutzer zählen
