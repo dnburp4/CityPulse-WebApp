@@ -22,7 +22,7 @@ export const useUserStore = defineStore("user", {
         emailAddress: email,
         password: password,
       };
-
+    
       try {
         const response = await axios.post("/login", loginInformation);
         this.user = response.data; // Speichert die Benutzerdaten
@@ -30,9 +30,25 @@ export const useUserStore = defineStore("user", {
         this.isSuperAdmin = response.data.isSuperAdmin; // Setzt den SuperAdmin-Status
         router.push("/"); // Weiterleitung zur Startseite nach erfolgreichem Login
       } catch (error) {
-        console.error("Anmeldung fehlgeschlagen:", error.response?.data || error.message);
+        console.error("Fehler-Response:", error.response); // Logge die komplette Fehlerantwort
+        if (error.response) {
+          const status = error.response.status;
+          const message = error.response.data.message;
+    
+          if (status === 404) {
+            throw new Error(message || "Diese E-Mail-Adresse existiert nicht.");
+          } else if (status === 401) {
+            throw new Error(message || "Das eingegebene Passwort ist falsch.");
+          } else {
+            throw new Error(message || "Unbekannter Fehler. Bitte versuchen Sie es erneut.");
+          }
+        } else {
+          throw new Error("Netzwerk- oder Serverfehler. Bitte versuchen Sie es später erneut.");
+        }
       }
-    },
+    },    
+    
+    
 
     // Methode zum Registrieren
     async signUp(email, password, fullName, phoneNumber, address) {

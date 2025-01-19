@@ -5,31 +5,49 @@ module.exports = {
 
   login: async function (req, res) {
     let params = req.body;
-    let user = await User.findOne({
-      emailAddress: params.emailAddress.toLowerCase(),
-    });
-    // If there was no matching user, respond thru the "badCombo" exit.
-    if (!user) {
-      throw "badCombo";
-    }
-    // If the password doesn't match, then also exit thru "badCombo".
-    await sails.helpers.passwords
-      .checkPassword(params.password, user.password)
-      .intercept("incorrect", "badCombo");
-    // Modify the active session instance.
-    req.session.userId = user.id;
-    req.session.user = user;
-    return res.json(user);
-  },  
-
-    async find(req, res) {
-      try {
-        const users = await User.find();
-        return res.json(users);
-      } catch (error) {
-        return res.serverError(error);
+  
+    try {
+      // Benutzer anhand der E-Mail finden
+      sails.log.debug("Login-Anfrage für E-Mail:", params.emailAddress);
+      let user = await User.findOne({
+        emailAddress: params.emailAddress.toLowerCase(),
+      });
+  
+      // Wenn kein Benutzer gefunden wurde "404 Not Found" zurückgeben
+      if (!user) {
+        sails.log.debug("Benutzer nicht gefunden:", params.emailAddress);
+        return res.status(404).json({ message: "Diese E-Mail-Adresse existiert nicht." });
       }
-    },
+  
+      // Passwort überprüfen
+      try {
+        await sails.helpers.passwords.checkPassword(params.password, user.password);
+      } catch (err) {
+        // Spezifischen Fehler für falsches Passwort abfangen
+        if (err.code === "incorrect") {
+          sails.log.debug("Falsches Passwort für Benutzer:", user.emailAddress);
+          return res.status(401).json({ message: "Das eingegebene Passwort ist falsch." });
+        }
+        // Andere Fehler und 500 zurückgeben
+        sails.log.error("Passwortprüfung fehlgeschlagen:", err);
+        return res.status(500).json({ message: "Ein Serverfehler ist aufgetreten. Bitte versuchen Sie es später erneut." });
+      }
+  
+      // Session initialisieren wenn erfolgreich
+      req.session.userId = user.id;
+      req.session.user = user;
+  
+      sails.log.debug("Login erfolgreich für Benutzer:", user.emailAddress);
+      return res.json(user);
+  
+    } catch (error) {
+      sails.log.error("Login-Fehler:", error);
+      return res.status(500).json({ message: "Ein Serverfehler ist aufgetreten. Bitte versuchen Sie es später erneut." });
+    }
+  }
+  
+,  
+  
 
     register: async function (req, res) {
       sails.log.debug("Creating user...");

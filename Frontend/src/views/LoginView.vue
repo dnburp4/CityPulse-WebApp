@@ -13,18 +13,13 @@ let errorMessage = ref("");
 
 async function login() {
   try {
-    // Benutzer anmelden
     await userStore.signIn(email.value, password.value);
-    // Wenn Benutzer erfolgreich angemeldet ist weiterleiten
-    if (userStore.user) {
-      console.log("Logged in");
-      router.push('/restricted'); 
-    }
   } catch (error) {
-    console.error("Login failed:", error);
-    errorMessage.value = "Login fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben.";
+    errorMessage.value = error.message; // Setze die Fehlermeldung
   }
 }
+
+
 </script>
 
 <template>
@@ -38,6 +33,7 @@ async function login() {
       <form @submit.prevent="login">
         <h1>Login</h1>
 
+        
         <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
 
         
@@ -56,6 +52,7 @@ async function login() {
         <button type="submit" class="form-button">Login</button>
       </form>
 
+      
       
       <RouterLink to="/signup" class="account-registrieren-text">
         <h2>Noch kein Account?</h2>
