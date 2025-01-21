@@ -55,7 +55,7 @@ async function register() {
   <div class="main-container">
 
     <RouterLink to="/">
-    <img src="@/assets/LogoSVG_CityPulse.svg" alt="CityPulseLogo" id="CityPulseLogo" />
+    <img src="@/assets/LogoSVG_CityPulse.svg" alt="CityPulseLogo" id="CityPulseLogoLoginSign" />
     </RouterLink>
 
     <div class="log-in-container">

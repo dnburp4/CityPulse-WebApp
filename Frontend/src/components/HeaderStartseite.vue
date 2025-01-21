@@ -19,13 +19,15 @@ defineProps({
         
         <header class="header">
 
+        <div v-if ="isUserLoggedIn">
         <RouterLink to="/rechnung" id="ticket-icon">
         <img src="@/assets/ticketsIcon.svg" alt="Tickets Icon"> 
         </RouterLink>
+        </div> 
 
 
             
-            <img src="@/assets/LogoSVG_CityPulse.svg" alt="CityPulseLogo" id="CityPulseLogo">
+            <img src="@/assets/LogoSVG_CityPulse.svg" alt="CityPulseLogo" id="CityPulseLogoStart">
 
 
             <!-- if yhe  -->
@@ -85,7 +87,7 @@ h1 {
     text-align: center;
 }
 
-#CityPulseLogo {
+#CityPulseLogoStart {
     width: 300px;
     height: auto;
 }

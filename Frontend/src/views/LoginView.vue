@@ -26,7 +26,7 @@ async function login() {
   <div class="main-container">
    
     <RouterLink to="/">
-    <img src="@/assets/LogoSVG_CityPulse.svg" alt="CityPulseLogo" id="CityPulseLogo" />
+    <img src="@/assets/LogoSVG_CityPulse.svg" alt="CityPulseLogo" id="CityPulseLogoLoginSign" />
     </RouterLink>
 
     <div class="log-in-container">
@@ -76,13 +76,13 @@ async function login() {
   padding-bottom: 15px;
 }
 
-#CityPulseLogo {
+#CityPulseLogoLoginSign {
   width: 300px;
   height: auto;
   margin-bottom: 20px;
 }
 
-#CityPulseLogo:hover {
+#CityPulseLogoLoginSign:hover {
   transform: scale(1.1); 
   box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2); 
 }
