@@ -37,7 +37,11 @@ module.exports.bootstrap = async function() {
      },
     { emailAddress: 'nicolas.burbano@htwg-konstanz.de', fullName: 'Nicolas Burbano', isSuperAdmin:true, 
       password: await sails.helpers.passwords.hashPassword("123456")},
- 
+      
+      { emailAddress: 'adminprof@htwg-konstanz.de', fullName: 'Admin', isSuperAdmin:true,
+        password: await sails.helpers.passwords.hashPassword("webtechhtwg2025"),
+        },
+      
 
       //weitere anlegen
  ]);
