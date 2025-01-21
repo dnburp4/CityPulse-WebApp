@@ -18,6 +18,12 @@ defineProps({
 <section class="hero">
         
         <header class="header">
+
+        <RouterLink to="/rechnung" id="ticket-icon">
+        <img src="@/assets/ticketsIcon.svg" alt="Tickets Icon"> 
+        </RouterLink>
+
+
             
             <img src="@/assets/LogoSVG_CityPulse.svg" alt="CityPulseLogo" id="CityPulseLogo">
 
@@ -89,6 +95,19 @@ h1 {
     height: 100%;
     position: absolute;
     top: 35px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 999; 
+    text-decoration: none; 
+}
+
+#ticket-icon {
+    width: 100%; 
+    height: 100%;
+    position: absolute;
+    top: 70px;
     right: 10px;
     width: 40px;
     height: 40px;

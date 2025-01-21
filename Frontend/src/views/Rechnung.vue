@@ -24,7 +24,7 @@ onMounted(loadTickets);
 
 <template>
   <div class="rechnung-view">
-    <Header title="Ihre Rechnung" />
+    <Header title="Deine Tickets" />
 
     <main class="rechnung-container">
       
