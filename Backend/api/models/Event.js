@@ -21,6 +21,13 @@ module.exports = {
         via: 'forEvent'
       },
 
+      //Add a reference to tickets
+      ticketsKauf: {
+        collection: 'Ticketkauf', 
+        via: 'forEventId'
+      },
+
+
       
       
 

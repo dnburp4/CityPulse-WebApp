@@ -19,7 +19,10 @@ const loadEventDetails = async () => {
   try {
     const response = await axios.get(`/event/${route.query.eventId}`); // API-Call basierend auf der ID
     selectedEvent.value = response.data;
-    console.log("Geladene Event-Details:", selectedEvent.value); // Debugging
+    console.log("Geladene Event-Details:", selectedEvent.value); 
+    console.log("Geladene Event-ID:", selectedEvent.value.id); 
+
+    // Debugging
   } catch (error) {
     console.error("Fehler beim Laden des Events:", error);
   }
@@ -40,6 +43,7 @@ const proceedToFinalTicket = async () => {
       buyerName: fullName.value,
       buyerAddress: route.query.address,
       buyerHouseNumber: route.query.houseNumber,
+      forEventId: selectedEvent.value.id
     };
 
     const response = await axios.post('/ticketkauf', payload); // Speichert die Tickets im Backend

@@ -1,5 +1,6 @@
 module.exports = {
   attributes: {
+    id: { type: 'string', required: true, unique: true },
     eventName: { type: 'string', required: true },
     totalPrice: { type: 'number', required: true },
     buyerName: { type: 'string', required: true },
@@ -11,5 +12,11 @@ module.exports = {
       model: 'user', 
       required: true,
     },
+    forEventId: {
+      model: 'event', 
+      required: true,
+    },
+
+
   },
 };

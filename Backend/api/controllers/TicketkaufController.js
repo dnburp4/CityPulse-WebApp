@@ -2,8 +2,13 @@ const { v4: uuidv4 } = require('uuid'); //nicht benutzt
 
 module.exports = {
   create: async function (req, res) {
+
+
+    sails.log.debug("Erstelle Tickets")
+
     try {
-      const { eventName, ticketCount, totalPrice, buyerName, buyerAddress, buyerHouseNumber } = req.body;
+      const { eventName, ticketCount, totalPrice, buyerName, buyerAddress, buyerHouseNumber, forEventId } = req.body;
+      sails.log.debug(req.body)
       const userId = req.session.userId; 
       if (!userId) {
         return res.forbidden({ message: 'Benutzer nicht eingeloggt' });
@@ -12,12 +17,14 @@ module.exports = {
       const tickets = [];
       for (let i = 0; i < ticketCount; i++) {
         tickets.push({
+          id: uuidv4(), 
           eventName,
           totalPrice,
           buyerName,
           buyerAddress,
           buyerHouseNumber,
           userId, 
+          forEventId: forEventId
         });
       }
   

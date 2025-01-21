@@ -40,6 +40,8 @@ onMounted(loadTickets);
             <p><strong>Name:</strong> {{ ticket.buyerName }}</p>
             <p><strong>Adresse:</strong> {{ ticket.buyerAddress }}</p>
             <p><strong>Hausnummer:</strong> {{ ticket.buyerHouseNumber }}</p>
+            <p><strong>Tickets-ID:</strong> {{ ticket.id }}</p>
+
           </div>
           <div class="ticket-footer">
             <p><strong>Preis:</strong> {{ ticket.totalPrice }} €</p>
