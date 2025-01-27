@@ -10,7 +10,7 @@ const newsCount = ref(0);
 
 const fetchUserCount = async () => {
   try {
-    const response = await fetch('http://localhost:1337/api/users/count');
+    const response = await fetch('/api/users/count');
     const data = await response.json();
     userCount.value = data.count;
   } catch (error) {
@@ -20,7 +20,7 @@ const fetchUserCount = async () => {
 
 const fetchEventCount = async () => {
   try {
-    const response = await fetch('http://localhost:1337/api/events/count');
+    const response = await fetch('/api/events/count');
     const data = await response.json();
     eventCount.value = data.count;
   } catch (error) {
@@ -30,7 +30,7 @@ const fetchEventCount = async () => {
 
 const fetchNewsCount = async () => {
   try {
-    const response = await fetch('http://localhost:1337/api/news/count'); // API-Aufruf
+    const response = await fetch('/api/news/count'); // API-Aufruf
     const data = await response.json();
     newsCount.value = data.count; // Newsanzahl speichern
   } catch (error) {

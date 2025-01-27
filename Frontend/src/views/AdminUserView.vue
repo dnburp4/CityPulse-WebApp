@@ -107,11 +107,6 @@ const updateUser = async () => {
     <input v-model="newUser.phoneNumber" type="text" placeholder="Telefonnummer" />
     <input v-model="newUser.address" type="text" placeholder="Adresse" />
     
-    <!-- Checkbox für Admin-Status -->
-    <label>
-      <input type="checkbox" v-model="newUser.isSuperAdmin" />
-      Super Admin
-    </label>
 
     <button class="btn-post-user" type="submit">Erstellen</button>
   </form>
