@@ -13,14 +13,14 @@ module.exports = {
     sails.log.debug("id "+ params.bewertungEventOf)
 
     let AVERAGE_BEWERTUNG = `
-      SELECT AVG(bewertung) as avgBewertung
+      SELECT AVG(bewertung) AS "avgBewertung"
       FROM bewertungfeedback
-      WHERE bewertungEventOf = $1`;
+      WHERE "bewertungEventOf" = $1`;
 
     let rawResult = await sails.sendNativeQuery(AVERAGE_BEWERTUNG, [params.bewertungEventOf]);
     sails.log.debug(rawResult);
 
-    let avgBewertung = rawResult.rows[0].avgBewertung;
+    let avgBewertung = parseFloat(rawResult.rows[0].avgBewertung);
     sails.log.debug("Neuer Durschnitt: " + avgBewertung);
 
     await Event.updateOne({ id: params.bewertungEventOf }).set({ bewertung: avgBewertung });
@@ -49,7 +49,7 @@ module.exports = {
       }
 
       // Feedback aktualisieren
-      const updatedFeedback = await Feedback.updateOne({ id }).set({ bewertung });
+      const updatedFeedback = await BewertungFeedback.updateOne({ id }).set({ bewertung });
 
       if (!updatedFeedback) {
         return res.status(404).json({ error: 'Feedback nicht gefunden.' });
@@ -60,14 +60,14 @@ module.exports = {
 
       // Berechne die Durchschnittsbewertung für das Event
       var AVERAGE_BEWERTUNG = `
-        SELECT AVG(bewertung) AS avgBewertung
+        SELECT AVG(bewertung) AS "avgBewertung"
         FROM bewertungfeedback
-        WHERE bewertungEventOf = $1`;
+        WHERE "bewertungEventOf" = $1`;
 
       var rawResult = await sails.sendNativeQuery(AVERAGE_BEWERTUNG, [feedbackEventOf])
       sails.log(rawResult);
 
-      const avgBewertung = rawResult.rows[0].avgBewertung;
+      const avgBewertung = parseFloat(rawResult.rows[0].avgBewertung);
       sails.log(avgBewertung);
 
       // Aktualisiere die Event-Bewertung

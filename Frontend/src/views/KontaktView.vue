@@ -46,11 +46,11 @@ import Footer from '@/components/Footer.vue';
         
         <div class="contact-header">
     <div class="phone-header">
-      <img src="/src/assets/telephone.png" alt="Telefon-Symbol" class="phone-icon" />
+      <img src="@/assets/telephone.png" alt="Telefon-Symbol" class="phone-icon" />
       <span class="phone-text">+49 123 456 789</span>
     </div>
     <div class="location-header">
-      <img src="/src/assets/location.png" alt="Standort-Symbol" class="location-icon" />
+      <img src="@/assets/location.png" alt="Standort-Symbol" class="location-icon" />
       <span class="location-text">Alfred-Wachtel-Straße 8, 78462 Konstanz</span>
     </div>
   </div>

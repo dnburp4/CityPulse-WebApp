@@ -48,11 +48,9 @@ module.exports = {
     ***************************************************************************/
 
     default: {
-      adapter: 'sails-mysql',
-      host: '193.196.53.194',
-      port: 33061,
-      user: 'user6_prod', // replace
-      database: 'citypulse_prod' // replace
+      adapter: 'sails-postgresql',
+      url: process.env.DATABASE_URL, // auf Render als Environment Variable setzen
+      ssl: true,
     },
 
 

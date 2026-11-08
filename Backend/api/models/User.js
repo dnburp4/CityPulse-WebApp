@@ -36,6 +36,7 @@ module.exports = {
       },
       phoneNumber: {
         type: 'number',
+        columnType: 'double precision',
         description: 'Number of the customers name',
         example: '015754241069'
       },
@@ -70,6 +71,11 @@ module.exports = {
         collection: 'ticketkauf', 
         via: 'userId', 
       },
+    },
+
+    // Passwort-Hash nie an den Browser schicken
+    customToJSON: function () {
+      return _.omit(this, ['password']);
     },
   
   

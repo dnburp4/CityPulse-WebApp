@@ -29,7 +29,7 @@
     <!-- Bewertung -->
     <div class="review-container">
       <img
-        v-for="n in Array(bewertung).fill(0)"
+        v-for="n in Math.round(bewertung || 0)"
         :key="n"
         src="@/assets/star-fill.svg"
         alt="reviews"

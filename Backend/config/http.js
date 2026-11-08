@@ -9,6 +9,8 @@
  * https://sailsjs.com/config/http
  */
 
+const path = require('path');
+
 module.exports.http = {
 
   /****************************************************************************
@@ -29,16 +31,32 @@ module.exports.http = {
     *                                                                          *
     ***************************************************************************/
 
-    // order: [
-    //   'cookieParser',
-    //   'session',
-    //   'bodyParser',
-    //   'compress',
-    //   'poweredBy',
-    //   'router',
-    //   'www',
-    //   'favicon',
-    // ],
+    order: [
+      'cookieParser',
+      'session',
+      'bodyParser',
+      'compress',
+      'poweredBy',
+      'spaFallback',
+      'router',
+      'www',
+      'favicon',
+    ],
+
+    /***************************************************************************
+    * SPA-Fallback fuer das Vue-Frontend (createWebHistory):                    *
+    * Ruft der Browser eine Seite direkt auf (z.B. /event/abc oder /news nach   *
+    * einem Reload), liefern wir die index.html aus. API-Aufrufe von axios      *
+    * schicken kein "text/html" im Accept-Header und landen weiter im Router.   *
+    ***************************************************************************/
+    spaFallback: function (req, res, next) {
+      const isPageRequest = req.method === 'GET' &&
+        (req.headers.accept || '').includes('text/html') &&
+        !path.extname(req.path) &&
+        req.path !== '/health';
+      if (!isPageRequest) { return next(); }
+      return res.sendFile(path.resolve(__dirname, '../assets/index.html'));
+    },
 
 
     /***************************************************************************

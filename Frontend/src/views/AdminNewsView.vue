@@ -23,7 +23,7 @@ const editArticle = ref(null);
 // Read
 const loadNews = async () => {
   try {
-    const response = await axios.get('/news'); 
+    const response = await axios.get('/newsBackend'); 
     news.value = response.data; 
   } catch (error) {
     console.error('Fehler beim Laden der Nachrichten:', error);
@@ -33,7 +33,7 @@ const loadNews = async () => {
 // Create
 const createArticle = async () => {
   try {
-    await axios.post('/news', newArticle.value);
+    await axios.post('/newsBackend', newArticle.value);
     alert('Artikel erfolgreich erstellt');
     loadNews(); 
     newArticle.value = {
@@ -49,7 +49,7 @@ const createArticle = async () => {
 // Delete 
 const deleteArticle = async (id) => {
   try {
-    await axios.delete(`/news/${id}`);
+    await axios.delete(`/newsBackend/${id}`);
     alert('Artikel erfolgreich gelöscht');
     loadNews(); 
   } catch (error) {
@@ -61,7 +61,7 @@ const deleteArticle = async (id) => {
 const updateArticle = async () => {
   if (!editArticle.value) return;
   try {
-    await axios.put(`/news/${editArticle.value.id}`, editArticle.value);
+    await axios.put(`/newsBackend/${editArticle.value.id}`, editArticle.value);
     alert('Artikel erfolgreich aktualisiert');
     loadNews(); 
 

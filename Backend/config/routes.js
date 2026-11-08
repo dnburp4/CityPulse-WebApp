@@ -19,7 +19,8 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
+  // '/' und alle Frontend-Seiten liefert der spaFallback in config/http.js aus.
+  'GET /health': (req, res) => res.ok('ok'), // fuer den Keep-Alive-Ping
 
   'GET /event': { controller: 'EventController', action: 'find' },
   'POST /event': { controller: 'EventController', action: 'create' },

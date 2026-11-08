@@ -53,11 +53,11 @@ module.exports.datastores = {
     // adapter: 'sails-mysql',
     // url: 'mysql://user:password@host:port/database',
 
-    adapter: 'sails-mysql',
-    host: '193.196.53.194',
-    port: 33061,
-    user: 'user6_prod', // replace  
-    database: 'citypulse_prod' // replace
+    // Neon Postgres. Die URL kommt aus der Umgebungsvariable DATABASE_URL
+    // (lokal alternativ in config/local.js, die nicht eingecheckt wird).
+    adapter: 'sails-postgresql',
+    url: process.env.DATABASE_URL,
+    ssl: true,
     
 
   },

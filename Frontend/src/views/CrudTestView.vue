@@ -100,7 +100,7 @@ onMounted(loadEvents);
         <input v-model="newEvent.id" type="text" placeholder="id" required />
         <input v-model="newEvent.name" type="text" placeholder="Name" required />
         <input v-model="newEvent.availableTickets" type="number" placeholder="Verfügbare Tickets || Dieser Wert ist fest und kann nicht verändert werden" />
-        <input v-model="newEvent.bild" type="text" placeholder="/src/assets/images/" />
+        <input v-model="newEvent.bild" type="text" placeholder="/images/bild.jpg" />
         <input v-model="newEvent.datum" type="text" placeholder="Datum" />
 
         

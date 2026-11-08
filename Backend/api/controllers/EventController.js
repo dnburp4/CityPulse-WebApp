@@ -130,8 +130,8 @@ module.exports = {
         }
     
       // Pfad zum Bild ergänzen (falls notwendig)
-      if (event.bild && !event.bild.startsWith('http')) {
-      event.bild = `http://localhost:1337/uploads/${event.bild}`;
+      if (event.bild && !event.bild.startsWith('http') && !event.bild.startsWith('/')) {
+        event.bild = `/images/${event.bild}`;
       }
 
         return res.json(event); // Event-Daten als JSON zurückgeben

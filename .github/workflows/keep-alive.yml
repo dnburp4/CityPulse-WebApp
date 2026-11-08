@@ -1,0 +1,15 @@
+# Haelt den Render-Free-Service wach, damit die Seite ohne Kaltstart laedt.
+# Render legt Free-Services nach 15 Minuten ohne Traffic schlafen.
+name: Keep Render awake
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'   # alle 10 Minuten (GitHub kann sich etwas verspaeten)
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping /health
+        run: curl -fsS --max-time 120 --retry 3 --retry-delay 10 https://citypulse-webapp.onrender.com/health
